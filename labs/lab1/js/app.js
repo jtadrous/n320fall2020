@@ -11,9 +11,16 @@ class Rect {
     }
 }
 
+class Drop {
+
+}
+
+class Raindrop {
+    
+}
+
 function setup() {
     createCanvas(800,600);
-    //fill(51);
 }
 
 function draw() {
