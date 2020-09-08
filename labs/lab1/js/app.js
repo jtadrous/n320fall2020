@@ -20,7 +20,7 @@ class Drops {
     fall() {
         let circles = [];
         for (var i = 0; i < 30; i++) {
-            circles.push(this.drop.createRect());
+            circles.push(this.drop.createDrop());
         }
 
         circles.forEach( function() {
@@ -54,5 +54,6 @@ function draw() {
     fill(51);
     var rect = new Rect(0, 520, 800, 80);
     var drop = new Drops();
+    console.log(drop);
     drop.fall();
 }
