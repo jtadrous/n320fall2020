@@ -16,7 +16,7 @@ class Drop {
 }
 
 class Raindrop {
-    constructor(x, y, color) {
+    constructor() {
         this.x = random(800);
         this.y = random(600);
         this.width = 3;
@@ -38,4 +38,6 @@ function draw() {
     fill(51);
     var rect = new Rect(0, 520, 800, 80);
     rect.createRect();
+    var drop = new Raindrop();
+    drop.createDrop();
 }
