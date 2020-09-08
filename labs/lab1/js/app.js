@@ -8,3 +8,9 @@ function setup() {
     fill(51);
     rect(0, 520, 800, 80);
 }
+
+class Rect {
+    constructor() {
+        
+    }
+}
