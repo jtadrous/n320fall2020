@@ -18,6 +18,7 @@ class Drops {
     }
 
     fall() {
+        let circles = [];
         for (var i = 0; i < 30; i++) {
             circles.push(this.drop.createRect());
         }
@@ -46,7 +47,6 @@ class Raindrop {
 
 function setup() {
     createCanvas(800,600);
-    let circles = [];
 }
 
 function draw() {
