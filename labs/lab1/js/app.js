@@ -17,14 +17,13 @@ class Drop {
 
 class Raindrop {
     constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
+        this.x = random(800);
+        this.y = random(600);
+        this.color = [201, 195, 177];
     }
 
     createDrop() {
-        let x = random(800);
-        let y = random(600);
+        
     }
 }
 
