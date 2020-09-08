@@ -12,15 +12,15 @@ class Rect {
 }
 
 class Drops {
-    constructor(drops) {
-        this.drops = drops;
+    constructor() {
+        this.drop = drop;
         this.speed = 5;
     }
 
     fall() {
         let circles = [];
         for (var i = 0; i < 30; i++) {
-            circles.push(this.drop.createDrop());
+            circles.push(this.drop.createDrops());
         }
 
         circles.forEach( function() {
@@ -40,8 +40,8 @@ class Raindrop {
         this.color = [201, 195, 177];
     }
 
-    createDrop() {
-        ellipse(this.x, this.y, this.width, this.height, this.color);
+    move() {
+        //ellipse(this.x, this.y, this.width, this.height, this.color);
     }
 }
 
