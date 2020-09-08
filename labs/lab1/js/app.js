@@ -53,6 +53,6 @@ function draw() {
     background(170, 222, 240);
     fill(51);
     var rect = new Rect(0, 520, 800, 80);
-    //var drop = new Raindrop();
-    //drop.createDrop();
+    var drop = new Drops();
+    drop.fall();
 }
