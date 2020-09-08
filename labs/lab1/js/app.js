@@ -11,8 +11,11 @@ class Rect {
     }
 }
 
-class Drop {
-
+class Drops {
+    constructor(drop) {
+        this.drop = drop;
+        this.speed = 5;
+    }
 }
 
 class Raindrop {
@@ -38,6 +41,6 @@ function draw() {
     fill(51);
     var rect = new Rect(0, 520, 800, 80);
     rect.createRect();
-    var drop = new Raindrop();
-    drop.createDrop();
+    //var drop = new Raindrop();
+    //drop.createDrop();
 }
