@@ -23,8 +23,10 @@ class Drops {
         }
 
         circles.forEach( function() {
-            this.drop.y ++;
+            this.drop.y += this.speed;
         })
+
+        this.speed ++;
     }
 }
 
