@@ -31,7 +31,7 @@ class Drops {
 class Raindrop {
     constructor() {
         this.x = random(800);
-        this.y = random(600);
+        this.y = 0;
         this.width = 5;
         this.height = 8;
         this.color = [201, 195, 177];
