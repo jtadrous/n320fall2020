@@ -18,7 +18,10 @@ class Drops {
     }
 
     fall() {
-        
+        let circles = [];
+        for (var i = 0; i < 30; i++) {
+            circles.push(this.drop.createRect());
+        }
     }
 }
 
@@ -44,7 +47,6 @@ function draw() {
     background(170, 222, 240);
     fill(51);
     var rect = new Rect(0, 520, 800, 80);
-    rect.createRect();
     //var drop = new Raindrop();
     //drop.createDrop();
 }
