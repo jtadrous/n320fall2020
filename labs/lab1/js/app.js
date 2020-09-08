@@ -21,6 +21,10 @@ class Drops {
         for (var i = 0; i < 30; i++) {
             circles.push(this.drop.createRect());
         }
+
+        circles.forEach( function() {
+            this.drop.y ++;
+        })
     }
 }
 
