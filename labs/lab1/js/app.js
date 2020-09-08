@@ -12,8 +12,8 @@ class Rect {
 }
 
 class Drops {
-    constructor(drop) {
-        this.drop = drop;
+    constructor(drops) {
+        this.drops = drops;
         this.speed = 5;
     }
 
