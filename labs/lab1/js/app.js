@@ -16,6 +16,10 @@ class Drops {
         this.drop = drop;
         this.speed = 5;
     }
+
+    fall() {
+        
+    }
 }
 
 class Raindrop {
