@@ -6,7 +6,7 @@ class Rect {
         this.height = height;
     }
 
-    createRect(){
+    createRect() {
         rect(this.x, this.y, this.width, this.height);
     }
 }
@@ -20,6 +20,11 @@ class Raindrop {
         this.x = x;
         this.y = y;
         this.color = color;
+    }
+
+    createDrop() {
+        let x = random(800);
+        let y = random(600);
     }
 }
 
