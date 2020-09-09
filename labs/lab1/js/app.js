@@ -52,7 +52,8 @@ function draw() {
 
     let circles = [];
     for (var i = 0; i < 30; i++) {
-        circles.push(this.drop.createDrops());
+        var myRain = new Raindrop();
+        circles.push(myRain);
     }
 
     var drop = new Drops();
