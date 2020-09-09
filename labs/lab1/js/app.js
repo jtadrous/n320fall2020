@@ -2,8 +2,10 @@
 //9/8/2020
 //N320
 
+//this creates the Rectangle or ground class
 class Rect {
     constructor(x, y, width, height, color) {
+        //these are all of the attributes for the ground rectangle
         this.x = x;
         this.y = y;
         this.width = width;
@@ -11,11 +13,14 @@ class Rect {
         this.color = color;
     }
 
+    //made a new method to display the ground on the canvas
     createRect() {
+        //every 10 raindrops, the color will go up
         if(counter >= 10 && counter % 10 == 0) {
             this.color ++;
         }
-        fill('rgb(30%, 10%,' + this.color + '%)');
+        //this makes it so only the blue part of rgb increases
+        fill('rgb(25%, 10%,' + this.color + '%)');
         rect(this.x, this.y, this.width, this.height);
     }
 }
