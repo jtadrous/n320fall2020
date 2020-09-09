@@ -59,9 +59,9 @@ class Raindrop {
     createDrop() {
         this.y += this.speed;
         ellipse(this.x, this.y, this.width, this.height, this.color);
-        if(this.drops.y >= 520) {
+        if(this.y >= 520) {
             counter ++;
-            this.drops.y = 0;
+            this.y = 0;
         }
         return counter
     }
