@@ -11,14 +11,13 @@ class Rect {
     }
 }
 
-class Drops {
-    constructor() {
-        this.drop = drop;
+class Group {
+    constructor(drops) {
+        this.drops = drops;
         this.speed = 5;
     }
 
     fall() {
-
         circles.forEach( function() {
             this.drop.y += this.speed;
         })
