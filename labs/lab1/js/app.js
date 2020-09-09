@@ -61,7 +61,7 @@ function setup() {
     createCanvas(800,600);
     for (var i = 0; i < 30; i++) {
         var myRain = new Raindrop();
-        myRain.createDrop();
+        //myRain.createDrop();
         circles.push(myRain);
     }
 }
