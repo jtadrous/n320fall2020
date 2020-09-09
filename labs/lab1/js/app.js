@@ -4,6 +4,7 @@ class Rect {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.color = "(0%,0%,100%)";
     }
 
     createRect() {
@@ -66,4 +67,5 @@ function draw() {
     var drop = new Group(circles);
     //console.log(drop);
     drop.fall();
+    rect.createRect();
 }
