@@ -35,6 +35,10 @@ class Group {
             this.drops[i].y += this.speed;
         }
 
+        circles.forEach( (circle) => { 
+            circle.createDrop();
+        })
+
         this.speed ++;
     }
 }
@@ -70,12 +74,10 @@ function draw() {
     background(170, 222, 240);
     fill(51);
     //noStroke();
-    circles.forEach( (circle) => { 
-        circle.createDrop();
-    })
+    
     
     //console.log(circles);
-    //var drop = new Group(circles);
+    var drop = new Group(circles);
     //console.log(drop);
     //drop.fall();
     ground.createRect();
