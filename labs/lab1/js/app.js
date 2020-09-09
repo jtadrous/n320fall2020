@@ -12,6 +12,9 @@ class Rect {
     }
 
     createRect() {
+        if(counter >= 10 && counter % 10 == 0) {
+            this.color ++;
+        }
         rect(this.x, this.y, this.width, this.height);
     }
 }
