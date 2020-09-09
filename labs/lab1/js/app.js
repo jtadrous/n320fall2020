@@ -57,6 +57,7 @@ class Raindrop {
     }
 
     createDrop() {
+        this.y += this.speed;
         ellipse(this.x, this.y, this.width, this.height, this.color);
     }
 }
