@@ -67,7 +67,7 @@ class Raindrop {
 }
 
 let circles = [];
-let ground = new Rect(0, 520, 800, 80);
+let ground = new Rect(0, 520, 800, 80, 5);
 let counter = 0;
 
 function setup() {
