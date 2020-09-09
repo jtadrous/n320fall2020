@@ -93,7 +93,7 @@ let counter = 0;
 function setup() {
     createCanvas(800,600);
     //created a for loop to make 30 new instances of the Raindrops class
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 40; i++) {
         var myRain = new Raindrop();
         //I added each new raindrop to the cirlces array
         circles.push(myRain);
@@ -110,6 +110,7 @@ function draw() {
     //let drop = new Group(circles);
 
     //made a for loop to update each raindrop's position and speed
+    //circles.length counts how many things are in the array circles
     for (var i = 0; i < circles.length; i++) {
         circles[i].createDrop();
     }
