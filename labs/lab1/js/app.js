@@ -20,7 +20,7 @@ class Rect {
     }
 }
 
-class Group {
+/*class Group {
     constructor(drops) {
         this.drops = drops;
         this.speed = random(1,5);
@@ -28,14 +28,15 @@ class Group {
 
     fall() {
         circles.forEach( (circle) => { 
+            circle.y += this.speed;
             circle.createDrop();
         })
 
-        for (var i = 0; i < this.drops.length; i++) {
-            this.drops[i].y += this.speed;
-        }
+        //for (var i = 0; i < this.drops.length; i++) {
+            //this.drops[i].y += this.speed;
+        //}
 
-        this.speed ++;
+        //this.speed ++;
 
         if(this.drops.y >= 520) {
             counter ++;
@@ -43,7 +44,7 @@ class Group {
         }
         return counter
     }
-}
+}*/
 
 class Raindrop {
     constructor() {
@@ -61,7 +62,6 @@ class Raindrop {
 
 let circles = [];
 let ground = new Rect(0, 520, 800, 80);
-
 let counter = 0;
 
 function setup() {
@@ -74,7 +74,7 @@ function setup() {
 
 function draw() {
     background(170, 222, 240);
-    //fill(51);
+    fill(51);
     //noStroke();
     //console.log(circles);
     //console.log(drop);
