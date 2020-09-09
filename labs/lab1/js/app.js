@@ -56,7 +56,7 @@ function draw() {
         circles.push(myRain);
     }
     console.log(circles);
-    var drop = new Group();
+    var drop = new Group(circles);
     console.log(drop);
     drop.fall();
 }
