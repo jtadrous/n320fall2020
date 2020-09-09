@@ -41,6 +41,7 @@ class Group {
             counter ++;
             this.drops.y = 0;
         }
+        return counter;
     }
 }
 
