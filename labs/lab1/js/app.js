@@ -27,10 +27,6 @@ class Group {
     }
 
     fall() {
-        //this.drops.forEach( function() {
-            //this.drops.y += this.speed;
-        //})
-
         for (var i = 0; i < this.drops.length; i++) {
             this.drops[i].y += this.speed;
         }
@@ -66,7 +62,6 @@ function setup() {
     createCanvas(800,600);
     for (var i = 0; i < 30; i++) {
         var myRain = new Raindrop();
-        //myRain.createDrop();
         circles.push(myRain);
     }
 }
@@ -75,12 +70,9 @@ function draw() {
     background(170, 222, 240);
     fill(51);
     //noStroke();
-    
-    
     //console.log(circles);
-   
-    //console.log(drop);
     let drop = new Group(circles);
+    //console.log(drop);
     drop.fall();
     ground.createRect();
 }
