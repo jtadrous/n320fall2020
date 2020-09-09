@@ -45,6 +45,7 @@ class Raindrop {
 }
 
 let circles = [];
+var rect = new Rect(0, 520, 800, 80);
 
 function setup() {
     createCanvas(800,600);
@@ -59,7 +60,6 @@ function draw() {
     background(170, 222, 240);
     fill(51);
     noStroke();
-    var rect = new Rect(0, 520, 800, 80);
 
     
     //console.log(circles);
