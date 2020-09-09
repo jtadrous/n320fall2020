@@ -41,7 +41,7 @@ class Group {
             counter ++;
             this.drops.y = 0;
         }
-        return counter;
+        return counter
     }
 }
 
@@ -61,7 +61,7 @@ class Raindrop {
 
 let circles = [];
 let ground = new Rect(0, 520, 800, 80);
-
+let drop = new Group(circles);
 let counter = 0;
 
 function setup() {
@@ -77,7 +77,6 @@ function draw() {
     fill(51);
     //noStroke();
     //console.log(circles);
-    let drop = new Group(circles);
     //console.log(drop);
     drop.fall();
     ground.createRect();
