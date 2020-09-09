@@ -23,7 +23,7 @@ class Rect {
 class Group {
     constructor(drops) {
         this.drops = drops;
-        this.speed = 5;
+        this.speed = random(1,5);
     }
 
     fall() {
@@ -59,7 +59,7 @@ class Raindrop {
 
 let circles = [];
 let ground = new Rect(0, 520, 800, 80);
-let drop = new Group(circles);
+
 let counter = 0;
 
 function setup() {
@@ -78,9 +78,9 @@ function draw() {
     
     
     //console.log(circles);
-    
-    drop.
+   
     //console.log(drop);
-    //drop.fall();
+    let drop = new Group(circles);
+    drop.fall();
     ground.createRect();
 }
