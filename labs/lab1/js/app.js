@@ -18,8 +18,8 @@ class Group {
     }
 
     fall() {
-        circles.forEach( function() {
-            this.drop.y += this.speed;
+        this.drops.forEach( function() {
+            this.drops.y += this.speed;
         })
 
         this.speed ++;
@@ -56,7 +56,7 @@ function draw() {
         circles.push(myRain);
     }
     console.log(circles);
-    var drop = new Drops();
+    var drop = new Group();
     console.log(drop);
     drop.fall();
 }
