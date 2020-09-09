@@ -78,9 +78,9 @@ function draw() {
     //noStroke();
     //console.log(circles);
     //console.log(drop);
-    let drop = new Group(circles);
+    //let drop = new Group(circles);
     for (var i = 0; i < circles.length; i++) {
-        drop.fall();
+        circles[i].createDrop();
     }
     //drop.fall();
     ground.createRect();
