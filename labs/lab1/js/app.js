@@ -53,6 +53,7 @@ class Raindrop {
         this.width = 5;
         this.height = 8;
         this.color = [201, 195, 177];
+        this.speed = 5;
     }
 
     createDrop() {
