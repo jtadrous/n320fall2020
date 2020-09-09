@@ -54,7 +54,7 @@ class Raindrop {
 }
 
 let circles = [];
-var rect = new Rect(0, 520, 800, 80);
+let ground = new Rect(0, 520, 800, 80);
 let counter = 0;
 
 function setup() {
@@ -69,7 +69,7 @@ function setup() {
 function draw() {
     background(170, 222, 240);
     fill(51);
-    noStroke();
+    //noStroke();
     circles.forEach( (circle) => { 
         circle.createDrop();
     })
@@ -78,5 +78,5 @@ function draw() {
     //var drop = new Group(circles);
     //console.log(drop);
     //drop.fall();
-    rect.createRect();
+    ground.createRect();
 }
