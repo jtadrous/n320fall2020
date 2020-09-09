@@ -1,3 +1,7 @@
+//Julie Tadrous
+//9/8/2020
+//N320
+
 class Rect {
     constructor(x, y, width, height) {
         this.x = x;
