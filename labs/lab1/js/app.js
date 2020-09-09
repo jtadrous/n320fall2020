@@ -63,7 +63,6 @@ class Raindrop {
             counter ++;
             this.y = 0;
         }
-        return counter
     }
 }
 
