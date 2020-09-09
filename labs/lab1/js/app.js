@@ -27,13 +27,13 @@ class Group {
     }
 
     fall() {
-        for (var i = 0; i < this.drops.length; i++) {
-            this.drops[i].y += this.speed;
-        }
-
         circles.forEach( (circle) => { 
             circle.createDrop();
         })
+        
+        for (var i = 0; i < this.drops.length; i++) {
+            this.drops[i].y += this.speed;
+        }
 
         this.speed ++;
     }
