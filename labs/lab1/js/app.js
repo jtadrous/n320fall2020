@@ -15,6 +15,7 @@ class Rect {
         if(counter >= 10 && counter % 10 == 0) {
             this.color ++;
         }
+        fill('rgb(30%, 10%,' + this.color + '%)');
         rect(this.x, this.y, this.width, this.height);
     }
 }
