@@ -8,7 +8,6 @@ class Rect {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.color = "(0%,0%,100%)";
     }
 
     createRect() {
