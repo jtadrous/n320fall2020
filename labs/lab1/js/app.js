@@ -20,7 +20,7 @@ class Rect {
             this.color ++;
         }
         //this makes it so only the blue part of rgb increases
-        fill('rgb(25%, 10%,' + this.color + '%)');
+        fill('rgb(10%, 10%,' + this.color + '%)');
         //created a new rectangle with p5
         rect(this.x, this.y, this.width, this.height);
     }
