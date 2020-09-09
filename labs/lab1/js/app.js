@@ -71,25 +71,34 @@ class Raindrop {
         this.y += this.speed;
         //creates an ellipse with the specific attributes
         ellipse(this.x, this.y, this.width, this.height, this.color);
+        //if the raindrops hit the top of the ground box
         if(this.y >= 520) {
+            //then it adds to the counter and repositions the raindrop at the top of the canvas
             counter ++;
             this.y = 0;
         }
     }
 }
 
+//array to hold all the circles
 let circles = [];
+//new instance of the Rect class
 let ground = new Rect(0, 520, 800, 80, 5);
+//a counter variable
 let counter = 0;
 
+//basic setup function for p5
 function setup() {
     createCanvas(800,600);
+    //created a for loop to make 30 new instances of the Raindrops class
     for (var i = 0; i < 30; i++) {
         var myRain = new Raindrop();
+        //I added each new raindrop to the cirlces array
         circles.push(myRain);
     }
 }
 
+//basic draw function for p5
 function draw() {
     background(170, 222, 240);
     fill(51);
@@ -97,9 +106,12 @@ function draw() {
     //console.log(circles);
     //console.log(drop);
     //let drop = new Group(circles);
+
+    //made a for loop to update each raindrop's position and speed
     for (var i = 0; i < circles.length; i++) {
         circles[i].createDrop();
     }
     //drop.fall();
+    //this initializes the ground rectangle and calls the createRect() method
     ground.createRect();
 }
