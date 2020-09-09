@@ -81,7 +81,7 @@ function setup() {
 function draw() {
     background(170, 222, 240);
     fill(51);
-    //noStroke();
+    noStroke();
     //console.log(circles);
     //console.log(drop);
     //let drop = new Group(circles);
