@@ -18,9 +18,13 @@ class Group {
     }
 
     fall() {
-        this.drops.forEach( function() {
-            this.drops.y += this.speed;
-        })
+        //this.drops.forEach( function() {
+            //this.drops.y += this.speed;
+        //})
+
+        for (var i = 0; i < this.drops.length; i++) {
+            this.drops[i].y += this.speed;
+        }
 
         this.speed ++;
     }
