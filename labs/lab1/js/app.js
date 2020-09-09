@@ -92,7 +92,7 @@ let counter = 0;
 //basic setup function for p5
 function setup() {
     createCanvas(800,600);
-    //created a for loop to make 30 new instances of the Raindrops class
+    //created a for loop to make 40 new instances of the Raindrops class
     for (var i = 0; i < 40; i++) {
         var myRain = new Raindrop();
         //I added each new raindrop to the cirlces array
