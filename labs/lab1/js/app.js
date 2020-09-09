@@ -36,8 +36,8 @@ class Raindrop {
         this.color = [201, 195, 177];
     }
 
-    move() {
-        //ellipse(this.x, this.y, this.width, this.height, this.color);
+    createDrop() {
+        ellipse(this.x, this.y, this.width, this.height, this.color);
     }
 }
 
@@ -53,9 +53,10 @@ function draw() {
     let circles = [];
     for (var i = 0; i < 30; i++) {
         var myRain = new Raindrop();
+        myRain.createDrop();
         circles.push(myRain);
     }
-
+    console.log(circles);
     var drop = new Drops();
     console.log(drop);
     drop.fall();
