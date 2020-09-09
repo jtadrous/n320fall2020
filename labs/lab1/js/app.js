@@ -67,7 +67,9 @@ class Raindrop {
 
     //made a new method to display the raindrop ellipses on the canvas
     createDrop() {
+        //adds a random value from 1 to 5 to the y value to make the raindrop move down
         this.y += this.speed;
+        //creates an ellipse with the specific attributes
         ellipse(this.x, this.y, this.width, this.height, this.color);
         if(this.y >= 520) {
             counter ++;
