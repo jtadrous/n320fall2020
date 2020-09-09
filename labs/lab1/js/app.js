@@ -46,6 +46,12 @@ class Raindrop {
 
 function setup() {
     createCanvas(800,600);
+    let circles = [];
+    for (var i = 0; i < 30; i++) {
+        var myRain = new Raindrop();
+        myRain.createDrop();
+        circles.push(myRain);
+    }
 }
 
 function draw() {
@@ -53,12 +59,7 @@ function draw() {
     fill(51);
     var rect = new Rect(0, 520, 800, 80);
 
-    let circles = [];
-    for (var i = 0; i < 30; i++) {
-        var myRain = new Raindrop();
-        myRain.createDrop();
-        circles.push(myRain);
-    }
+    
     console.log(circles);
     var drop = new Group(circles);
     console.log(drop);
