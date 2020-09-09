@@ -51,6 +51,7 @@ class Raindrop {
 
 let circles = [];
 var rect = new Rect(0, 520, 800, 80);
+let counter = 0;
 
 function setup() {
     createCanvas(800,600);
