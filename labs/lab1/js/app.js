@@ -26,7 +26,9 @@ class Rect {
     }
 }
 
-/*class Group {
+/*Tried to make a manager class, but it didn't work
+
+class Group {
     constructor(drops) {
         this.drops = drops;
         this.speed = random(1,5);
