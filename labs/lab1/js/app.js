@@ -21,6 +21,7 @@ class Rect {
         }
         //this makes it so only the blue part of rgb increases
         fill('rgb(25%, 10%,' + this.color + '%)');
+        //created a new rectangle with p5
         rect(this.x, this.y, this.width, this.height);
     }
 }
@@ -51,16 +52,20 @@ class Rect {
     }
 }*/
 
+//this creates the raindrops class
 class Raindrop {
     constructor() {
+        //these are all of the attributes for the raindrop ellipses
         this.x = random(800);
         this.y = 0;
         this.width = 5;
         this.height = 8;
         this.color = [201, 195, 177];
+        //made the speed random for each raindrop
         this.speed = random(1,5);
     }
 
+    //made a new method to display the raindrop ellipses on the canvas
     createDrop() {
         this.y += this.speed;
         ellipse(this.x, this.y, this.width, this.height, this.color);
