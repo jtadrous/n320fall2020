@@ -10,20 +10,20 @@ class Instrument {
     }
 }
 
-class Woodwind {
-    constructor() {
-        super(466);
+class Woodwind extends Instrument {
+    constructor(family, verb) {
+        super(466, family, verb);
     }
 }
 
-class Percussion {
-    constructor() {
-        super(415);
+class Percussion extends Instrument {
+    constructor(family, verb) {
+        super(415, family, verb);
     }
 }
 
-class Strings {
-    constructor() {
-        super(440);
+class Strings extends Instrument {
+    constructor(family, verb) {
+        super(440, family, verb);
     }
 }
