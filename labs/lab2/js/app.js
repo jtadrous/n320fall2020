@@ -35,7 +35,7 @@ class Percussion extends Instrument {
 }
 
 //created a child class for stringed instruments, used the extends keyword for inheritance
-class Strings extends Instrument {
+class String extends Instrument {
     //the constructor passes the loudness of 440 to the base class and sets the family and verb properties
     constructor(family, verb) {
         super(440, family, verb);
@@ -48,7 +48,7 @@ let band = [];
 //made 3 new instances of each of the child classes
 var myWood = new Woodwind("flute", "toots");
 var myPerc = new Percussion("snare drum", "rolls");
-var myStr = new Strings("violin", "plucks");
+var myStr = new String("violin", "plucks");
 
 //pushed each of the new objects into the band array
 band.push(myWood);
