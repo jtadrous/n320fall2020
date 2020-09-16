@@ -6,24 +6,24 @@ class Instrument {
     }
 
     playNote() {
-        console.log(this.family + " " + this.playverb + " at " + this.loudness + ".");
+        console.log(this.family + " " + this.playverb + " at " + this.loudness + " Hz.");
     }
 }
 
 class Woodwind {
     constructor() {
-
+        super(466);
     }
 }
 
 class Percussion {
     constructor() {
-
+        super(415);
     }
 }
 
 class Strings {
     constructor() {
-
+        super(440);
     }
 }
