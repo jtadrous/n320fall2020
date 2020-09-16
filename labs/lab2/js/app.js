@@ -6,7 +6,7 @@ class Instrument {
     }
 
     playNote() {
-        console.log(this.family + " " + this.playverb + " at " + this.loudness + " Hz.");
+        console.log("The " + this.family + " " + this.playverb + " at " + this.loudness + " Hz.");
     }
 }
 
@@ -33,7 +33,7 @@ var myWood = new Woodwind("flute", "toots");
 band.push(myWood);
 var myPerc = new Percussion("snare drum", "rolls");
 band.push(myPerc);
-var myStr = new Strings("violin", "strums");
+var myStr = new Strings("violin", "plucks");
 band.push(myStr);
 
 band.forEach( (part) => { 
