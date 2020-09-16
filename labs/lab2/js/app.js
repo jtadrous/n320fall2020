@@ -1,3 +1,8 @@
+//Julie Tadrous
+//Lab 2
+//N320
+
+
 //created a base class for all instrument objects
 class Instrument {
     //added a constructor with 3 properties: loudness, family, and playverb
@@ -45,7 +50,7 @@ var myWood = new Woodwind("flute", "toots");
 var myPerc = new Percussion("snare drum", "rolls");
 var myStr = new Strings("violin", "plucks");
 
-//pushed each of the objects into the band array
+//pushed each of the new objects into the band array
 band.push(myWood);
 band.push(myPerc);
 band.push(myStr);
