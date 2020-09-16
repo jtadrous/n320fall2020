@@ -35,3 +35,7 @@ var myPerc = new Percussion("snare drum", "rolls");
 band.push(myPerc);
 var myStr = new Strings("violin", "strums");
 band.push(myStr);
+
+band.forEach( (part) => { 
+    part.playNote();
+});
