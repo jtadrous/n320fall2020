@@ -27,3 +27,7 @@ class Strings extends Instrument {
         super(440, family, verb);
     }
 }
+
+var myWood = new Woodwind("flute", "toots");
+var myPerc = new Percussion("snare drum", "rolls");
+var myStr = new Strings("violin", "strums");
