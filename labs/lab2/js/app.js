@@ -20,7 +20,7 @@ class Instrument {
 
 //created a child class for woodwind instruments, used the extends keyword for inheritance
 class Woodwind extends Instrument {
-    //the constructor passes the loudness of 466 to the base class and sets the family and verb properties
+    //the constructor passes the loudness to the base class and sets the family and verb properties
     constructor(loud) {
         super(loud, "woodwinds", "toot");
     }
@@ -28,7 +28,7 @@ class Woodwind extends Instrument {
 
 //created a child class for percussion instruments, used the extends keyword for inheritance
 class Percussion extends Instrument {
-    //the constructor passes the loudness of 415 to the base class and sets the family and verb properties
+    //the constructor passes the loudness to the base class and sets the family and verb properties
     constructor(loud) {
         super(loud, "percussion", "rolls");
     }
@@ -36,7 +36,7 @@ class Percussion extends Instrument {
 
 //created a child class for stringed instruments, used the extends keyword for inheritance
 class String extends Instrument {
-    //the constructor passes the loudness of 440 to the base class and sets the family and verb properties
+    //the constructor passes the loudness to the base class and sets the family and verb properties
     constructor(loud) {
         super(loud, "strings", "strum");
     }
