@@ -4,4 +4,10 @@ class VirtualMachine {
         this.secondCandy = {name: "Skittles", count: 50, taste: "fruity"}
         this.firstChips = {name: "Ruffles", count: 50, taste: "savory"}
     }
+    buySnack() {
+
+    }
+    render() {
+        
+    }
 }
