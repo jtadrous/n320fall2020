@@ -5,8 +5,14 @@ class VirtualMachine {
         this.firstChips = {name: "Ruffles", count: 50, taste: "savory"}
     }
 
-    buySnack() {
-
+    buySnack(candy) {
+        if(candy == "firstCandy") {
+            this.firstCandy.count--;
+        } else if (candy == "secondCandy") {
+            this.secondCandy.conut--;
+        } else {
+            this.firstChips.count--;
+        }
     }
 
     render() {
