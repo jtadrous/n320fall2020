@@ -40,3 +40,5 @@ class VirtualMachine {
 }
 
 let myMach = new VirtualMachine();
+let myDiv = document.getElementById("info");
+myDiv.innerHTML = myMach.render();
