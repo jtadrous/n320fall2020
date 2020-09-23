@@ -8,10 +8,13 @@ class VirtualMachine {
     buySnack(candy) {
         if(candy == "firstCandy") {
             this.firstCandy.count--;
+            this.render();
         } else if (candy == "secondCandy") {
             this.secondCandy.conut--;
+            this.render();
         } else {
             this.firstChips.count--;
+            this.render();
         }
     }
 
@@ -22,19 +25,19 @@ class VirtualMachine {
         <li>${this.firstCandy.taste}</li>
         <li>${this.firstCandy.count}</li>
         </ul>
-        <button onclick=""></button>
+        <button id="firstCandy" onclick="${this.buySnack(this.id)}"></button>
         <h2>${this.secondCandy.name}</h2>
         <ul>
         <li>${this.secondCandy.taste}</li>
         <li>${this.secondCandy.count}</li>
         </ul>
-        <button onclick=""></button>
+        <button id="secondCandy" onclick="${this.buySnack(this.id)}"></button>
         <h2>${this.firstChips.name}</h2>
         <ul>
         <li>${this.firstChips.taste}</li>
         <li>${this.firstChips.count}</li>
         </ul>
-        <button onclick=""></button>
+        <button id="firstChips" onclick="${this.buySnack(this.id)}"></button>
         `;
     }
 }
