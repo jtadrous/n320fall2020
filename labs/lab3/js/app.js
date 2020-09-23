@@ -38,3 +38,5 @@ class VirtualMachine {
         `;
     }
 }
+
+let myMach = new VirtualMachine();
