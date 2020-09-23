@@ -25,19 +25,19 @@ class VirtualMachine {
         <li>${this.firstCandy.taste}</li>
         <li>${this.firstCandy.count}</li>
         </ul>
-        <button id="firstCandy" onclick="${this.buySnack(this.id)}"></button>
+        <button id="firstCandy" onclick="${this.buySnack("firstCandy")}"></button>
         <h2>${this.secondCandy.name}</h2>
         <ul>
         <li>${this.secondCandy.taste}</li>
         <li>${this.secondCandy.count}</li>
         </ul>
-        <button id="secondCandy" onclick="${this.buySnack(this.id)}"></button>
+        <button id="secondCandy" onclick="${this.buySnack("secondCandy")}"></button>
         <h2>${this.firstChips.name}</h2>
         <ul>
         <li>${this.firstChips.taste}</li>
         <li>${this.firstChips.count}</li>
         </ul>
-        <button id="firstChips" onclick="${this.buySnack(this.id)}"></button>
+        <button id="firstChips" onclick="${this.buySnack("firstChips")}"></button>
         `;
     }
 }
@@ -45,3 +45,4 @@ class VirtualMachine {
 let myMach = new VirtualMachine();
 let myDiv = document.getElementById("info");
 myDiv.innerHTML = myMach.render();
+console.log(myDiv.innerHTML);
