@@ -1,3 +1,7 @@
+//Julie Tadrous
+//N320
+//Lab 3
+
 //new class that represents the overall vending machine
 class VirtualMachine {
     constructor() {
