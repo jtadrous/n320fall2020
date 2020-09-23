@@ -6,11 +6,11 @@ class VirtualMachine {
     }
 
     buySnack(candy) {
-        if(candy == "firstCandy") {
+        if(candy == "firstCandy" && this.firstCandy.count > 0) {
             this.firstCandy.count--;
-        } else if (candy == "secondCandy") {
+        } else if (candy == "secondCandy" && this.secondCandy.count > 0) {
             this.secondCandy.count--;
-        } else if (candy == "firstChips"){
+        } else if (candy == "firstChips" && this.firstChips.count > 0){
             this.firstChips.count--;
         }
         myDiv.innerHTML = this.render();
