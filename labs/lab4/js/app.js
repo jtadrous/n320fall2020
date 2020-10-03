@@ -1,5 +1,14 @@
 //Created a variable to act as a counter
 let counter = 0;
+
+//Added an array to store all the elements of the game board
+let board = [document.getElementById("Rectangle_2"), document.getElementById("Rectangle_2-2"),
+document.getElementById("Rectangle_2-3"), document.getElementById("Rectangle_2-4"),
+document.getElementById("Rectangle_2-5"), document.getElementById("Rectangle_2-6"),
+document.getElementById("Rectangle_2-7"), document.getElementById("Rectangle_2-8"),
+document.getElementById("Rectangle_2-9")];
+console.log(board);
+
 drawCanvas();
 function drawCanvas() {
     requestAnimationFrame(drawCanvas);
