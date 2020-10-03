@@ -1,13 +1,27 @@
 let counter = 0;
+drawCanvas();
+function drawCanvas() {
+    requestAnimationFrame(drawCanvas);
+}
 
 addEventListener("click", onPlayClick)
 function onPlayClick(event) {
-    if(counter > 9) {
+    console.log(event.target.getAttribute("xlink:href"));
+    if(event.target.getAttribute("data-name") != "Rectangle 2") {
+        return;
+    } else if(counter > 9) {
         return;
     } else if(counter % 2 == 0) {
-        event.target.xlink = "oPlayer.png"
+        event.target.setAttribute("xlink:href", "oPlayer.png"); 
+        //console.log(event.target.getAttribute("xlink:href"));
+        console.log(event.target.id)
+        console.log(counter);
+        console.log(counter % 2);
     } else {
-        event.target.xlink = "xPlayer.png"
+        event.target.setAttribute("xlink:href", "xPlayer.png"); 
+        console.log(event.target.id);
+        console.log(counter);
+        console.log(counter % 2);
     }
     counter++;
 }
