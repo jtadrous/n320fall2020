@@ -1,3 +1,4 @@
+//Created a variable to act as a counter
 let counter = 0;
 drawCanvas();
 function drawCanvas() {
