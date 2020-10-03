@@ -26,6 +26,9 @@ function onPlayClick(event) {
     } else if(counter > 8) {
         //Checks to make sure that the counter is less than 8, if not it returns
         return;
+    } else if (event.target.getAttribute("xlink:href") == "oPlayer.png" || event.target.getAttribute("xlink:href") == "xPlayer.png") {
+        //Checks to see if the element already has the X or O image, if so then it returns
+        return;
     } else if(counter % 2 == 0) {
         //Checks to see if the counter is divisible by 2, it so it changes the rectangle that was clicked
         //to the O image
