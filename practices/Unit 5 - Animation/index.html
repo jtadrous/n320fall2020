@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        th {height: 50px; width: 50px; padding: 15px; background-color: #4CAF50; color: white;}
+        /*th:hover {background-color: #f5f5f5; color: black;}*/
+        button {background-color: white; color: black; border: 3px solid #4CAF50; width: 50px; border-radius: 8px; opacity: 0;}
+        .selected {animation-name: selectedAnim; animation-duration: .7s; animation-fill-mode: forwards;}
+        /*.deselected {animation-name: selectedAnim; animation-duration: 1s; animation-direction: reverse; animation-fill-mode: forwards;}*/
+        @keyframes selectedAnim {from {color:white; background-color:#4CAF50} to {color:black; background-color: #f5f5f5;}}
+    </style>
+</head>
+<body>
+    <h3>CSS Animation</h3>
+    <table>
+        <tr>
+            <th id="yes">Yes</th>
+            <th id="no">No</th>
+        </tr>
+    </table><br/>
+    <button id="sub">Submit</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
