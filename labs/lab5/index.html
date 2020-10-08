@@ -4,49 +4,34 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-         /*.small {
-            background-color: aquamarine;
-           width: 20px;
-            height: 15px;
-        }
-        #big {
-            background-color: blue;
-            width: 100px;
-            height: 50px;
-        }
-        .grid {
-            display: grid;
-            grid-column-gap: 50px;
-        }*/
         .grid {
             display: grid;
             grid-template-columns: auto auto auto;
-            grid-gap: 10px;
-            padding: 10px;
+            grid-gap: 20px;
+            padding: 20px;
+            width: 700px;
         }
-
         .grid > div {
             background-color: #6d873a;
-            padding: 10px 10px;
-            width: 220px;
-            height: 75px;
+            width: 215px;
+            height: 115px;
         }
         #big {
             background-color: #84a4e3;
-            width: 400px;
-            height: 200px;
+            width: 740px;
+            height: 100px;
         }
     </style>
 </head>
 <body>
     <h1>Animation Lab</h1>
-    <div id="big">hi</div>
+    <div id="big"></div>
     <div class="grid">
-        <div class="small1">hi</div>
-        <div class="small2">hi</div>
-        <div class="small3">hi</div>
-        <div class="small4">hi</div>
-        <div class="small5">hi</div>
+        <div class="small1"></div>
+        <div class="small2"></div>
+        <div class="small3"></div>
+        <div class="small4"></div>
+        <div class="small5"></div>
         <div class="small6"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
