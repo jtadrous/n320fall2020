@@ -3,19 +3,18 @@ addEventListener("mouseover", highLight);
 addEventListener("mouseout", reColor);
 addEventListener("click", exitGallery);
 
-//Pulled each of the rectangles by their ids and pushed them into the shapes array
+//Pulled each of the rectangles by their className and pushed them into the shapes array
 let shapes = document.getElementsByClassName("rect");
 console.log(shapes);
 
 //Created a for loop to run through the array of rectangles and animate the opacities to change
 for (i = 0; i < shapes.length; i++) {
     //Used GreenSock for the animation and delayed the opacity change for each rectangle
-    TweenMax.to(shapes[i], {duration: 0.5*i, opacity: 1});
+    TweenMax.to(shapes[i], {duration: 0.7*i, opacity: 1});
 }
 
 //Created a function to change the rectangle color when hovered over
 function highLight(event) {
-    //console.log(event.target.className == "small");
     if (event.target.className == "rect") {
         //Used GreenSock for the animation and changed the element's color to gray
         TweenMax.to(event.target, {backgroundColor: "#adadad"});
