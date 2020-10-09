@@ -1,5 +1,6 @@
 //Pulled each of the rectangles by their className and pushed them into the shapes array
-let shapes = document.getElementsByClassName("rect");
+//let shapes = document.getElementsByClassName("rect");
+let shapes = document.getElementById("container");
 console.log(shapes);
 
 //Created a for loop to run through the array of rectangles and animate the opacities to change
