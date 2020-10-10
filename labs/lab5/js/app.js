@@ -1,21 +1,26 @@
 //Pulled each of the rectangles by their className and pushed them into the shapes array
-//let shapes = document.getElementsByClassName("rect");
-let shapes = document.getElementById("grid").children;
-//shapes.push(document.ge tElementsByClassName("grid"));
+let shapes = document.getElementsByClassName("canvas");
+//let shapes = document.getElementById("grid").children;
+//shapes.push(document.getElementsByClassName("grid"));
 console.log(shapes);
 //console.log(screen);
 
 //Created a for loop to run through the array of rectangles and animate the opacities to change
 for (i = 0; i < shapes.length; i++) {
-    console.log(i + " i");
+    //console.log(i + " i");
     //Used GreenSock for the animation and delayed the opacity change for each rectangle
-    //TweenMax.from(shapes[i], {duration: 3*i, opacity: 0});
+    TweenMax.from(shapes[i], {duration: 1*i, opacity: 0});
     //Added an event for whenever a user mouses over, mouses off, and clicks an element
     //if (shapes[i].className == "grid") {
-        let items = shapes[i];
+        //let items = shapes[i];
         //document.getElementById("grid").children;
-        
-        for (x = 0; x < items.length; x++) {
+        if (shapes[i].className == "rect canvas") {
+            shapes[i].addEventListener("mouseover", highLight);
+            shapes[i].addEventListener("mouseout", reColor);
+            shapes[i].addEventListener("click", exitGallery);
+        }
+
+        /*for (x = 0; x < items.length; x++) {
             console.log(x + " x");
             console.log(shapes[i].className);
             TweenMax.from(shapes[i], {duration: 3*i, opacity: 0});
@@ -25,8 +30,8 @@ for (i = 0; i < shapes.length; i++) {
                 items[x].addEventListener("mouseout", reColor);
                 items[x].addEventListener("click", exitGallery);
             }
-        }
-    //}
+        //}
+    //}*/
 }
 
 /*for (i = 0; i < shapes.length; i++) {
@@ -56,5 +61,6 @@ function reColor(event) {
 function exitGallery(event) {
     //Used GreenSock for the animation and delayed the x coordinate change for each rectangle
     //this makes each rectangle move left off the screen
+    console.log("hello");
     TweenMax.to(event.target, {duration: 1, x: -1000});
 }
