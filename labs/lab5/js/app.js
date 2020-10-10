@@ -1,18 +1,39 @@
 //Pulled each of the rectangles by their className and pushed them into the shapes array
 //let shapes = document.getElementsByClassName("rect");
-let shapes = document.getElementById("container");
+let shapes = document.getElementById("grid").children;
+//shapes.push(document.ge tElementsByClassName("grid"));
 console.log(shapes);
+//console.log(screen);
 
 //Created a for loop to run through the array of rectangles and animate the opacities to change
 for (i = 0; i < shapes.length; i++) {
+    console.log(i + " i");
     //Used GreenSock for the animation and delayed the opacity change for each rectangle
-    TweenMax.to(shapes[i], {duration: 0.7*i, opacity: 1});
-
+    //TweenMax.from(shapes[i], {duration: 3*i, opacity: 0});
     //Added an event for whenever a user mouses over, mouses off, and clicks an element
+    //if (shapes[i].className == "grid") {
+        let items = shapes[i];
+        //document.getElementById("grid").children;
+        
+        for (x = 0; x < items.length; x++) {
+            console.log(x + " x");
+            console.log(shapes[i].className);
+            TweenMax.from(shapes[i], {duration: 3*i, opacity: 0});
+            TweenMax.from(items[x], {duration: 3*i, opacity: 0});
+            if (items[x].className == "rect") {
+                items[x].addEventListener("mouseover", highLight);
+                items[x].addEventListener("mouseout", reColor);
+                items[x].addEventListener("click", exitGallery);
+            }
+        }
+    //}
+}
+
+/*for (i = 0; i < shapes.length; i++) {
     shapes[i].addEventListener("mouseover", highLight);
     shapes[i].addEventListener("mouseout", reColor);
     shapes[i].addEventListener("click", exitGallery);
-}
+}*/
 
 //Created a function to change the rectangle color when hovered over
 function highLight(event) {
