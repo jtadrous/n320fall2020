@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        /*Added in-line styling (css) for each of the rectangles in the grid*/
+        /*Added in-line styling (css) for each of the elements in the grid*/
         .grid {
             display: grid;
             grid-template-columns: auto auto auto;
@@ -30,10 +30,11 @@
     </style>
 </head>
 <body>
-    <h1 class="canvas">Animation Lab</h1>
+    <!--Made sure to give each of the elements the 'canvas' class-->
+    <h1 id="text" class="canvas">Animation Lab</h1>
     <a href="../../index.html"><button class="canvas">Back</button></a>
     <br /><br />
-    <!--Made sure to give each of the rectangle divs unique ids or classes-->
+    <!--Made sure to give each of the rectangle divs the unique class 'rect'-->
     <div id="big" class="rect canvas"></div>
     <div class="grid">
         <div class="rect canvas"></div>
