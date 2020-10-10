@@ -36,6 +36,5 @@ function reColor(event) {
 function exitGallery(event) {
     //Used GreenSock for the animation and delayed the x coordinate change for each rectangle
     //this makes each rectangle move left off the screen
-    console.log("hello");
-    TweenMax.to(event.target, {duration: 1, x: -1000});
+    TweenMax.to(event.target, {duration: 1.5, x: -1000});
 }
