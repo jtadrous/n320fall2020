@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        #cover {
+            width: 100px;
+            height: 150px;
+            text-align: center;
+            padding: 10px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <book-view v-for="book in books" v-bind:book="book" v-bind:key="book.id"></book-view>
+        <book-view id="cover" v-for="book in books" v-bind:book="book" v-bind:key="book.id"></book-view>
         <br/>
         <button v-on:click="showBook">Show New Book</button>
     </div>
