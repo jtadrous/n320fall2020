@@ -21,12 +21,13 @@ let app = new Vue ({
         ]
     },
     methods: {
-        //This method loops through the books array and compares the counter to the loop iteration.
+        //This method loops through the books array and compares the counter to the loop iteration 'i'.
         showBook: function () {
             counter++;
 
             //When the counter and book.id are equal it changes the 'now' attribute to true so the v-if=true
             //and thus the book shows up on the page.
+            //Anything else will set the 'now' attribute to false so the v-if=false and the book will not show up
             for (i = 0; i < this.books.length; i++) {
                 if (counter == this.books[i].id) {
                     this.books[i].now = true; 
