@@ -6,7 +6,7 @@
 </head>
 <body>
     <div id="app">{{books}}
-        <book-view></book-view>
+        <book-view v-for="book in books" v-bind:course="book" v-bind:key="book.id"></book-view>
         <button v-if="now" v-on:click="showBook">Show Another Book</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
