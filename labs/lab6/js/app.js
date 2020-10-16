@@ -1,7 +1,7 @@
 //Setup a new Vue Component
 Vue.component("book-view", {
     props: ["book"],
-    template: "<div style='background-color:\"book.color\";' v-if=\"book.now\">{{book.title}}<br/>By: {{book.author}}<br/>{{book.emoji}}</div>"
+    template: "<div style=\"background-color:'book.color';\" v-if=\"book.now\">{{book.title}}<br/>By: {{book.author}}<br/><br/>{{book.emoji}}</div>"
 });
 
 let counter = 1;
