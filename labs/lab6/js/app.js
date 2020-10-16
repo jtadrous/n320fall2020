@@ -19,18 +19,15 @@ let app = new Vue ({
     methods: {
         showBook: function () {
             counter++;
-            if (counter == 1) {
-                this.books[0].now = true;
-                this.books[1].now = false;
-                this.books[2].now = false;
-            } else if (counter == 2) {
-                this.books[0].now = false;
-                this.books[1].now = true;
-                this.books[2].now = false;
-            } else if (counter == 3) {
-                this.books[0].now = false;
-                this.books[1].now = false;
-                this.books[2].now = true;
+            for (i = 0; i < this.books.length; i++) {
+                if (counter == this.books[i].id) {
+                    this.books[i].now = true; 
+                } else {
+                    this.books[i].now = false;
+                }
+            }
+
+            if (counter == books.length) {
                 counter = 0;
             }
         }
