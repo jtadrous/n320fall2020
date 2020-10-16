@@ -5,7 +5,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app">{{books}}
+    <div id="app">
         <book-view v-for="book in books" v-bind:book="book" v-bind:key="book.id"></book-view>
         <button v-on:click="showBook">Show Another Book</button>
     </div>
