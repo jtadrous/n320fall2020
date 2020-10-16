@@ -2,7 +2,11 @@
 let app = new Vue ({
     el: "#app",
     data: {
-        books: "This is where the books will be shown."
+        books: [
+            {title: "The Book Thief", author: "Markus Zusak", emoji: ""},
+            {title: "The Maze Runner", author: "James Dashner", emoji: ""},
+            {title: "Truly Devious", author: "Maureen Johnson", emoji: ""}
+        ]
     },
     methods: {}
 });
