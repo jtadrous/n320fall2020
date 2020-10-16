@@ -1,3 +1,9 @@
+//Setup a new Vue Component
+Vue.component("book-view", {
+    props: ["book"],
+    template: "<div>{{book.title}}<br/>{{book.author}}<br/>{{book.emoji}}</div>"
+});
+
 //Setup a new Vue Application object
 let app = new Vue ({
     el: "#app",
