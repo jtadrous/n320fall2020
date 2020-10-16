@@ -2,9 +2,8 @@
 Vue.component("book-view", {
     props: ["book"],
 
-    //this template displays the title, author, and emoji of a certain book
-    //as long as the v-if=true
-    template: "<div style=\"background-color:book.color;\" v-if=\"book.now\">{{book.title}}<br/>By: {{book.author}}<br/><br/>{{book.emoji}}</div>"
+    //this template displays the title, author, and emoji of a certain book as long as the v-if=true
+    template: "<div v-if=\"book.now\">{{book.title}}<br/>By: {{book.author}}<br/><br/>{{book.emoji}}</div>"
 });
 
 //Created a counter to keep track of which book is next in line to be shown
