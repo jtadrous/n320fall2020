@@ -1,5 +1,5 @@
-[
-    {"make": "Toyota", "model":"Prius", "year": 2012, "color": "silver"},
-    {"make": "Kia", "model": "Forte", "year": 2013, "color": "black"},
-    {"make": "Honda", "model": "Civic", "year": 2020, "color": "red"}
-]
+{
+    "phone": "Samsung Galaxy S10e",
+    "type": "Android",
+    "colors": ["Prism Blue", "Prism White", "Prism Black", "Prism Green"]
+}
