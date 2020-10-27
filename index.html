@@ -3,35 +3,53 @@
     <head>
         <meta charset="UTF-8">
         <title>N320 Projects</title>
+        <style>
+            .flex-container {
+                display: flex;
+                flex-wrap: wrap;
+                background-image: url("purple_banner.jpg");
+                background-color: #cccccc;
+                width: 85%;
+            }
+
+            .flex-container > div {
+                background-color: #f1f1f1;
+                width: 170px;
+                height: 125px;
+                margin: 20px;
+                text-align: center;
+                line-height: 75px;
+                font-size: 15px;
+                border: 2px dashed black;
+            }
+
+            .flex-container > div:hover {
+                background-color: #d4c5ce;
+            }
+        </style>
     </head>
     <body>
         <h1>Julie Tadrous</h1>
         <p>N320 Projects</p>
         <p>Fall 2020</p>
 
-        <h2>Lab 1</h2>
-        <p><a href="labs/lab1/index.html">First Example</a></p>
+        <div class="flex-container">
+            <div><a href="labs/lab1/index.html"><h2>Lab 1</h2></a></div>
 
-        <h2>Lab 2</h2>
-        <p><a href="labs/lab2/index.html">Second Example</a></p>
+            <div><a href="labs/lab2/index.html"><h2>Lab 2</h2></a></div>
 
-        <h2>Lab 3</h2>
-        <p><a href="labs/lab3/index.html">Third Example</a></p>
+            <div><a href="labs/lab3/index.html"><h2>Lab 3</h2></a></div>
 
-        <h2>Lab 4</h2>
-        <p><a href="labs/lab4/index.html">Fourth Example</a></p>
+            <div><a href="labs/lab4/index.html"><h2>Lab 4</h2></a></div>
 
-        <h2>Lab 5</h2>
-        <p><a href="labs/lab5/index.html">Fifth Example</a></p>
+            <div><a href="labs/lab5/index.html"><h2>Lab 5</h2></a></div>
 
-        <h2>Lab 6</h2>
-        <p><a href="labs/lab6/index.html">Sixth Example</a></p>
+            <div><a href="labs/lab6/index.html"><h2>Lab 6</h2></a></div>
 
-        <h2>Lab 7</h2>
-        <p><a href="labs/lab7/index.html">Seventh Example</a></p>
+            <div><a href="labs/lab7/index.html"><h2>Lab 7</h2></a></div>
 
-        <h2>Project 1</h2>
-        <p><a href="project1/index.html">Eighth Example</a></p>
+            <div><a href="project1/index.html"><h2>Project 1</h2></a></div>
+        </div>
 
         <script src="app.js"></script>
     </body>
