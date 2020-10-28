@@ -8,12 +8,12 @@
                 display: flex;
                 flex-wrap: wrap;
                 background-image: url("purple_banner.jpg");
-                background-color: #cccccc;
+                background-color: white;
                 width: 85%;
             }
 
             .flex-container > div {
-                background-color: #f1f1f1;
+                background-color: white;
                 width: 160px;
                 height: 175px;
                 margin: 20px;
@@ -23,21 +23,28 @@
                 border: 2px dashed black;
             }
 
-            a:hover {
-                color: black;
+            a:link {
+                text-decoration: none;
+                color: #af6e96
             }
-
+            a:visited {
+                color: #af6e96
+            }
+            a:hover {
+                color: #5d0169;
+                text-decoration: underline #5d0169;
+            }
             a:active {
-                color: blue;
+                color: black;
             }
         </style>
     </head>
     <body>
-        <h1>Julie Tadrous</h1>
-        <p>N320 Projects</p>
-        <p>Fall 2020</p>
-
         <div class="flex-container">
+            <div style="width: 100%; height: 100px; line-height: 90%; padding-top: 15px;">
+                <h1>Julie Tadrous</h1>
+                <h3>N320 Projects - Fall 2020</h3>
+            </div>
             <div>
                 <a href="labs/lab1/index.html"><h2>Lab 1</h2></a>
                 <a href="practices/Unit 1 - Objects/index.html"><h2>Practice 1</h2></a>
