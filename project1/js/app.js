@@ -40,8 +40,7 @@ function onPlayClick(event) {
     counter++;
 }
 
-let size = 9;
-
+//Classes
 class Space {
     constructor(id, element, fill) {
       this.id = id;
@@ -51,21 +50,20 @@ class Space {
     getType() {
         console.log("type");
     }
-    fillSpace() {
+    fillSpace(event) {
         console.log("fill");
+        if(counter % 2 == 0) {
+            //Checks to see if the counter is divisible by 2, it so it changes the rectangle that was clicked
+            //to the O image
+            event.target.setAttribute("xlink:href", "oPlayer.png"); 
+        } else {
+            //Changes the rectangle that was clicked to the O image
+            event.target.setAttribute("xlink:href", "xPlayer.png"); 
+        }
+        //Adds one to the counter variable
+        counter++;
     }
 }
-
-let board = [];
-for (let i = 0; i < size; i++) {
-    let varName = "Rectangle_" + i;
-    let el = document.getElementById(varName);
-    el.addEventListener("click", onPlayClick);
-    let mySpace = new Space(i, el, false);
-    board.push(mySpace);
-}
-
-console.log(board);
 
 class Board {
     constructor(size, grid) {
@@ -76,10 +74,11 @@ class Board {
 
     }
     win() {
-
+        for (let i = 0; i < this.grid.length; i++) {
+            //large if statement to check win conditions
+        }
     }
 }
-let myBoard = new Board(size, board);
 
 /*class Player {
     constructor(score, name, type, turn) {
@@ -91,6 +90,26 @@ let myBoard = new Board(size, board);
     takeTurn() {
 
     }
+}*/
+
+//Information
+let size = 9;
+let board = [];
+for (let i = 0; i < size; i++) {
+    let varName = "Rectangle_" + i;
+    let el = document.getElementById(varName);
+    el.addEventListener("click", onPlayClick);
+    let mySpace = new Space(i, el, false);
+    board.push(mySpace);
 }
-let player1 = new Player();
-let player2 = new Player();*/
+
+console.log(board);
+/*for (let i = 0; i < board.length; i++) {
+    board[i].getType();
+}*/
+
+let myBoard = new Board(size, board);
+//console.log(myBoard);
+
+//let player1 = new Player();
+//let player2 = new Player();
