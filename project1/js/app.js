@@ -2,17 +2,17 @@
 let counter = 0;
 
 //Added an array to store all the elements of the game board
-let board = [document.getElementById("Rectangle_2"), document.getElementById("Rectangle_2-2"),
-document.getElementById("Rectangle_2-3"), document.getElementById("Rectangle_2-4"),
-document.getElementById("Rectangle_2-5"), document.getElementById("Rectangle_2-6"),
-document.getElementById("Rectangle_2-7"), document.getElementById("Rectangle_2-8"),
-document.getElementById("Rectangle_2-9")];
-console.log(board);
+let grid = [document.getElementById("Rectangle_1"), document.getElementById("Rectangle_2"),
+document.getElementById("Rectangle_3"), document.getElementById("Rectangle_4"),
+document.getElementById("Rectangle_5"), document.getElementById("Rectangle_6"),
+document.getElementById("Rectangle_7"), document.getElementById("Rectangle_8"),
+document.getElementById("Rectangle_9")];
+console.log(grid);
 
-drawCanvas();
+/*drawCanvas();
 function drawCanvas() {
     requestAnimationFrame(drawCanvas);
-}
+}*/
 
 //This listens for when the player clicks on the screen.
 addEventListener("click", onPlayClick);
@@ -39,4 +39,55 @@ function onPlayClick(event) {
     }
     //Adds one to the counter variable
     counter++;
+}
+
+let size = 9;
+class Board {
+    constructor(size, grid) {
+      this.size = size;
+      this.grid = grid;
+    }
+    sendType() {
+
+    }
+    win() {
+
+    }
+}
+let myBoard = new Board();
+
+class Player {
+    constructor(score, name, type, turn) {
+      this.score = score;
+      this.name = name;
+      this.type = type;
+      this.turn = turn;
+    }
+    takeTurn() {
+
+    }
+}
+let player1 = new Player();
+let player2 = new Player();
+
+class Space {
+    constructor(id, element, fill) {
+      this.id = id;
+      this.element = element; //result of document.getElementById
+      this.fill = false;
+    }
+    getType() {
+
+    }
+    fillSpace() {
+
+    }
+}
+let space1 = new Space();
+
+let board = [];
+for (let i = 0; i < 8; i++) {
+    let varName = "Rectangle_" + i;
+    let el = document.getElementById(varName);
+    let mySpace = new Space(i, el, false);
 }
