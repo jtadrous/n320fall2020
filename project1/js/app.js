@@ -42,10 +42,11 @@ function onPlayClick(event) {
 
 //Classes
 class Space {
-    constructor(id, element, fill) {
+    constructor(id, element, fill, fillType) {
       this.id = id;
       this.element = element; //result of document.getElementById
       this.fill = fill; //boolean of whether the space has been filled or not
+      this.fillType = fillType;
     }
     getType() {
         console.log("type");
@@ -57,7 +58,7 @@ class Space {
             //to the O image
             event.target.setAttribute("xlink:href", "oPlayer.png"); 
         } else {
-            //Changes the rectangle that was clicked to the O image
+            //Changes the rectangle that was clicked to the X image
             event.target.setAttribute("xlink:href", "xPlayer.png"); 
         }
         //Adds one to the counter variable
@@ -74,8 +75,25 @@ class Board {
 
     }
     win() {
-        for (let i = 0; i < this.grid.length; i++) {
-            //large if statement to check win conditions
+        //large if statement to check win conditions
+        if ((this.grid[0].fillType == "O" && this.grid[1].fillType == "O" && this.grid[2].fillType == "O") ||
+            (this.grid[3].fillType == "O" && this.grid[4].fillType == "O" && this.grid[5].fillType == "O") ||
+            (this.grid[6].fillType == "O" && this.grid[7].fillType == "O" && this.grid[8].fillType == "O") ||
+            (this.grid[0].fillType == "O" && this.grid[4].fillType == "O" && this.grid[8].fillType == "O") ||
+            (this.grid[0].fillType == "O" && this.grid[4].fillType == "O" && this.grid[6].fillType == "O") ||
+            (this.grid[0].fillType == "O" && this.grid[3].fillType == "O" && this.grid[6].fillType == "O") ||
+            (this.grid[1].fillType == "O" && this.grid[4].fillType == "O" && this.grid[7].fillType == "O") ||
+            (this.grid[2].fillType == "O" && this.grid[5].fillType == "O" && this.grid[8].fillType == "O")) {
+            console.log("O Wins!");
+        } else if ((this.grid[0].fillType == "X" && this.grid[1].fillType == "X" && this.grid[2].fillType == "X") ||
+                   (this.grid[3].fillType == "X" && this.grid[4].fillType == "X" && this.grid[5].fillType == "X") ||
+                   (this.grid[6].fillType == "X" && this.grid[7].fillType == "X" && this.grid[8].fillType == "X") ||
+                   (this.grid[0].fillType == "X" && this.grid[4].fillType == "X" && this.grid[8].fillType == "X") ||
+                   (this.grid[0].fillType == "X" && this.grid[4].fillType == "X" && this.grid[6].fillType == "X") ||
+                   (this.grid[0].fillType == "X" && this.grid[3].fillType == "X" && this.grid[6].fillType == "X") ||
+                   (this.grid[1].fillType == "X" && this.grid[4].fillType == "X" && this.grid[7].fillType == "X") ||
+                   (this.grid[2].fillType == "X" && this.grid[5].fillType == "X" && this.grid[8].fillType == "X")) {
+                   console.log("X Wins!");
         }
     }
 }
@@ -99,7 +117,7 @@ for (let i = 0; i < size; i++) {
     let varName = "Rectangle_" + i;
     let el = document.getElementById(varName);
     el.addEventListener("click", onPlayClick);
-    let mySpace = new Space(i, el, false);
+    let mySpace = new Space(i, el, false, "none");
     board.push(mySpace);
 }
 
