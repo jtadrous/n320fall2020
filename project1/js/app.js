@@ -2,20 +2,19 @@
 let counter = 0;
 
 //Added an array to store all the elements of the game board
-let grid = [document.getElementById("Rectangle_1"), document.getElementById("Rectangle_2"),
+/*let grid = [document.getElementById("Rectangle_0"), document.getElementById("Rectangle_1"), document.getElementById("Rectangle_2"),
 document.getElementById("Rectangle_3"), document.getElementById("Rectangle_4"),
 document.getElementById("Rectangle_5"), document.getElementById("Rectangle_6"),
-document.getElementById("Rectangle_7"), document.getElementById("Rectangle_8"),
-document.getElementById("Rectangle_9")];
+document.getElementById("Rectangle_7"), document.getElementById("Rectangle_8")];
 console.log(grid);
 
-/*drawCanvas();
+drawCanvas();
 function drawCanvas() {
     requestAnimationFrame(drawCanvas);
 }*/
 
 //This listens for when the player clicks on the screen.
-addEventListener("click", onPlayClick);
+//addEventListener("click", onPlayClick);
 
 //I created a function to get the element that the player clicked.
 function onPlayClick(event) {
@@ -42,6 +41,32 @@ function onPlayClick(event) {
 }
 
 let size = 9;
+
+class Space {
+    constructor(id, element, fill) {
+      this.id = id;
+      this.element = element; //result of document.getElementById
+      this.fill = fill; //boolean of whether the space has been filled or not
+    }
+    getType() {
+        console.log("type");
+    }
+    fillSpace() {
+        console.log("fill");
+    }
+}
+
+let board = [];
+for (let i = 0; i < size; i++) {
+    let varName = "Rectangle_" + i;
+    let el = document.getElementById(varName);
+    el.addEventListener("click", onPlayClick);
+    let mySpace = new Space(i, el, false);
+    board.push(mySpace);
+}
+
+console.log(board);
+
 class Board {
     constructor(size, grid) {
       this.size = size;
@@ -54,9 +79,9 @@ class Board {
 
     }
 }
-let myBoard = new Board();
+let myBoard = new Board(size, board);
 
-class Player {
+/*class Player {
     constructor(score, name, type, turn) {
       this.score = score;
       this.name = name;
@@ -68,26 +93,4 @@ class Player {
     }
 }
 let player1 = new Player();
-let player2 = new Player();
-
-class Space {
-    constructor(id, element, fill) {
-      this.id = id;
-      this.element = element; //result of document.getElementById
-      this.fill = false;
-    }
-    getType() {
-
-    }
-    fillSpace() {
-
-    }
-}
-let space1 = new Space();
-
-let board = [];
-for (let i = 0; i < 8; i++) {
-    let varName = "Rectangle_" + i;
-    let el = document.getElementById(varName);
-    let mySpace = new Space(i, el, false);
-}
+let player2 = new Player();*/
