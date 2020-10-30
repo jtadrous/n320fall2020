@@ -61,6 +61,9 @@ class Space {
             //Changes the rectangle that was clicked to the X image
             event.target.setAttribute("xlink:href", "xPlayer.png"); 
         }
+        this.fill = true;
+        console.log(this.fill);
+        myBoard.win();
         //Adds one to the counter variable
         counter++;
     }
@@ -98,7 +101,7 @@ class Board {
     }
 }
 
-/*class Player {
+class Player {
     constructor(score, name, type, turn) {
       this.score = score;
       this.name = name;
@@ -106,9 +109,18 @@ class Board {
       this.turn = turn;
     }
     takeTurn() {
-
+        console.log("takeTurn");
+        if(counter % 2 == 0) {
+            player2.turn = true;
+            player1.turn = false;
+            myBoard.sendType("O");
+        } else {
+            player1.turn = true;
+            player2.turn = false;
+            myBoard.sendType("X");
+        }
     }
-}*/
+}
 
 //Information
 let size = 9;
@@ -129,5 +141,10 @@ console.log(board);
 let myBoard = new Board(size, board);
 //console.log(myBoard);
 
-//let player1 = new Player();
-//let player2 = new Player();
+var person1 = prompt("Player 1 (X): Please enter your name.", "Player 1");
+var person2 = prompt("Player 2 (O): Please enter your name.", "Player 2");
+
+let player1 = new Player(0, person1, "X", true);
+let player2 = new Player(0, person2, "O", false);
+//console.log(player1);
+//console.log(player2);
