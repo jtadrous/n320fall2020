@@ -49,7 +49,7 @@ class Space {
       this.fillType = fillType; //either X or O or none
     }
     fillSpace(box, type) {
-        console.log("fill", type);
+        //console.log("fill", type);
         let move = document.getElementById(box);
         if(counter > 8) {
             //Checks to make sure that the counter is less than 8, if not it returns
@@ -66,7 +66,8 @@ class Space {
             move.setAttribute("xlink:href", "xPlayer.png"); 
         }
         this.fill = true;
-        console.log(this.fill);
+        //console.log(this.fill);
+        console.log(myBoard);
         myBoard.win();
         //Adds one to the counter variable
         counter++;
@@ -78,7 +79,7 @@ class Board {
       this.size = size;
       this.grid = grid;
     }
-    sendType(box, type) {
+    /*sendType(box, type) {
         for (let i = 0; i < this.grid.length; i++) {
             //console.log(this.grid[i]);
             if (this.grid[i].id == box) {
@@ -87,6 +88,9 @@ class Board {
                 this.grid[i].fillSpace(box, type);
             }
         }
+    }*/
+    reset() {
+        console.log("reset");
     }
     win() {
         //large if statement to check win conditions
@@ -99,6 +103,7 @@ class Board {
             (this.grid[1].fillType == "O" && this.grid[4].fillType == "O" && this.grid[7].fillType == "O") ||
             (this.grid[2].fillType == "O" && this.grid[5].fillType == "O" && this.grid[8].fillType == "O")) {
             console.log("O Wins!");
+            player2.score++;
             counter = 9;
         } else if ((this.grid[0].fillType == "X" && this.grid[1].fillType == "X" && this.grid[2].fillType == "X") ||
                    (this.grid[3].fillType == "X" && this.grid[4].fillType == "X" && this.grid[5].fillType == "X") ||
@@ -109,6 +114,7 @@ class Board {
                    (this.grid[1].fillType == "X" && this.grid[4].fillType == "X" && this.grid[7].fillType == "X") ||
                    (this.grid[2].fillType == "X" && this.grid[5].fillType == "X" && this.grid[8].fillType == "X")) {
                    console.log("X Wins!");
+                   player1.score++;
                    counter = 9;
         }
     }
@@ -122,18 +128,36 @@ class Player {
       this.turn = turn;
     }
     takeTurn(square) {
-        console.log(square);
+        //console.log(square);
         if(this.type == "O") {
-            myBoard.sendType(square, "O");
+            //myBoard.sendType(square, "O");
+            for (let i = 0; i < board.length; i++) {
+                //console.log(this.grid[i]);
+                if (board[i].id == square) {
+                    //console.log("works");
+                    board[i].fillType = this.type;
+                    board[i].fillSpace(square, this.type);
+                }
+            }
             player2.turn = false;
             player1.turn = true;
-            console.log(player2.turn);
-            console.log(player1.turn);
+            console.log(player2);
+            console.log(player1);
         } else {
-            console.log("X");
-            myBoard.sendType(square, "X");
+            //console.log("X");
+            //myBoard.sendType(square, "X");
+            for (let i = 0; i < board.length; i++) {
+                //console.log(this.grid[i]);
+                if (board[i].id == square) {
+                    //console.log("works");
+                    board[i].fillType = this.type;
+                    board[i].fillSpace(square, this.type);
+                }
+            }
             player1.turn = false;
             player2.turn = true;
+            console.log(player2);
+            console.log(player1);
         }
     }
 }
