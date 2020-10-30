@@ -17,7 +17,7 @@ function drawCanvas() {
 //addEventListener("click", onPlayClick);
 
 //I created a function to get the element that the player clicked.
-function onPlayClick(event) {
+/*function onPlayClick(event) {
     //used the getAttribute method to get the data-name
     if(event.target.getAttribute("data-name") != "Rectangle 2") {
         //Checks to make sure that the object is a rectangle, if not it returns
@@ -38,7 +38,7 @@ function onPlayClick(event) {
     }
     //Adds one to the counter variable
     counter++;
-}
+}*/
 
 //Classes
 class Space {
@@ -48,18 +48,22 @@ class Space {
       this.fill = fill; //boolean of whether the space has been filled or not
       this.fillType = fillType; //either X or O or none
     }
-    getType() {
-        console.log("type");
-    }
-    fillSpace(event) {
-        console.log("fill");
-        if(counter % 2 == 0) {
-            //Checks to see if the counter is divisible by 2, it so it changes the rectangle that was clicked
+    fillSpace(box, type) {
+        console.log("fill", type);
+        let move = document.getElementById(box);
+        if(counter > 8) {
+            //Checks to make sure that the counter is less than 8, if not it returns
+            return;
+        } else if (move.getAttribute("xlink:href") == "oPlayer.png" || move.getAttribute("xlink:href") == "xPlayer.png") {
+            //Checks to see if the element already has the X or O image, if so then it returns
+            return;
+        } else if (type == "O") {
+            //Checks to see if the player type is "O", if so it changes the rectangle that was clicked
             //to the O image
-            event.target.setAttribute("xlink:href", "oPlayer.png"); 
-        } else {
+            move.setAttribute("xlink:href", "oPlayer.png"); 
+        } else if (type == "X") {
             //Changes the rectangle that was clicked to the X image
-            event.target.setAttribute("xlink:href", "xPlayer.png"); 
+            move.setAttribute("xlink:href", "xPlayer.png"); 
         }
         this.fill = true;
         console.log(this.fill);
@@ -74,8 +78,15 @@ class Board {
       this.size = size;
       this.grid = grid;
     }
-    sendType() {
-
+    sendType(box, type) {
+        for (let i = 0; i < this.grid.length; i++) {
+            //console.log(this.grid[i]);
+            if (this.grid[i].id == box) {
+                //console.log("works");
+                this.grid[i].fillType = type;
+                this.grid[i].fillSpace(box, type);
+            }
+        }
     }
     win() {
         //large if statement to check win conditions
@@ -88,6 +99,7 @@ class Board {
             (this.grid[1].fillType == "O" && this.grid[4].fillType == "O" && this.grid[7].fillType == "O") ||
             (this.grid[2].fillType == "O" && this.grid[5].fillType == "O" && this.grid[8].fillType == "O")) {
             console.log("O Wins!");
+            counter = 9;
         } else if ((this.grid[0].fillType == "X" && this.grid[1].fillType == "X" && this.grid[2].fillType == "X") ||
                    (this.grid[3].fillType == "X" && this.grid[4].fillType == "X" && this.grid[5].fillType == "X") ||
                    (this.grid[6].fillType == "X" && this.grid[7].fillType == "X" && this.grid[8].fillType == "X") ||
@@ -97,6 +109,7 @@ class Board {
                    (this.grid[1].fillType == "X" && this.grid[4].fillType == "X" && this.grid[7].fillType == "X") ||
                    (this.grid[2].fillType == "X" && this.grid[5].fillType == "X" && this.grid[8].fillType == "X")) {
                    console.log("X Wins!");
+                   counter = 9;
         }
     }
 }
@@ -108,16 +121,19 @@ class Player {
       this.type = type;
       this.turn = turn;
     }
-    takeTurn() {
-        console.log("takeTurn");
-        if(counter % 2 == 0) {
-            player2.turn = true;
-            player1.turn = false;
-            myBoard.sendType("O");
-        } else {
-            player1.turn = true;
+    takeTurn(square) {
+        console.log(square);
+        if(this.type == "O") {
+            myBoard.sendType(square, "O");
             player2.turn = false;
-            myBoard.sendType("X");
+            player1.turn = true;
+            console.log(player2.turn);
+            console.log(player1.turn);
+        } else {
+            console.log("X");
+            myBoard.sendType(square, "X");
+            player1.turn = false;
+            player2.turn = true;
         }
     }
 }
@@ -128,8 +144,8 @@ let board = [];
 for (let i = 0; i < size; i++) {
     let varName = "Rectangle_" + i;
     let el = document.getElementById(varName);
-    el.addEventListener("click", onPlayClick);
-    let mySpace = new Space(i, el, false, "none");
+    //el.addEventListener("click", fillSpace);
+    let mySpace = new Space(varName, el, false, "none");
     board.push(mySpace);
 }
 
@@ -144,7 +160,23 @@ let myBoard = new Board(size, board);
 var person1 = prompt("Player 1 (X): Please enter your name.", "Player 1");
 var person2 = prompt("Player 2 (O): Please enter your name.", "Player 2");
 
-let player1 = new Player(0, person1, "X", true);
-let player2 = new Player(0, person2, "O", false);
-//console.log(player1);
-//console.log(player2);
+let player1 = new Player(0, person1, "X", false);
+let player2 = new Player(0, person2, "O", true);
+//player1.takeTurn();
+console.log(player1);
+console.log(player2);
+
+function move(event) {
+    let square = event.target.getAttribute("id");
+    if(player2.turn == true) {
+        player2.takeTurn(square);
+    } else {
+        player1.takeTurn(square);
+    }
+}
+
+for (let i = 0; i < board.length; i++) {
+    let space = board[i].element;
+    //console.log(space);
+    space.addEventListener("click", move);
+}
