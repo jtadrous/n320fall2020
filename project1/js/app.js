@@ -106,6 +106,7 @@ class Board {
             counter = 9;
             winText.innerHTML = "O Wins!";
             winRect.removeAttribute("display");
+            TweenMax.from(winRect, {duration: 1, opacity: 0});
             scoreText.innerHTML = person1 + " (X): " + player1.score + "\n" + person2 + " (O): " + player2.score;
         } else if ((this.grid[0].fillType == "X" && this.grid[1].fillType == "X" && this.grid[2].fillType == "X") ||
                    (this.grid[3].fillType == "X" && this.grid[4].fillType == "X" && this.grid[5].fillType == "X") ||
@@ -120,12 +121,14 @@ class Board {
                    counter = 9;
                    winText.innerHTML = "X Wins!";
                    winRect.removeAttribute("display");
+                   TweenMax.from(winRect, {duration: 1, opacity: 0});
                    scoreText.innerHTML = person1 + " (X): " + player1.score + "\n" + person2 + " (O): " + player2.score;
         } else if (counter > 7) {
                    console.log("Cat Game!");
                    winText.style.fontSize = 130;
                    winText.innerHTML = "Cat Game!";
                    winRect.removeAttribute("display");
+                   TweenMax.from(winRect, {duration: 1, opacity: 0});
         }
     }
     resetIt() {
