@@ -5,10 +5,11 @@
     <title>Document</title>
 </head>
 <body>
-
     <h1>Final Tic Tac Toe</h1>
     <a href="../index.html"><button style="background-color: white; border: 3px solid black; border-radius: 8px;">Back</button></a>
     <br />
+    <h3 id="scoreText" style="white-space: pre-line;"></h3>
+    <p><strong>Rules: </strong>The object of Tic Tac Toe is to get three in a row. You play on a three by three game board. The first player is known as X and the second is O. Players alternate placing Xs and Os on the game board until either oppent has three in a row or all nine squares are filled. X always goes first, and in the event that no one has three in a row, the stalemate is called a cat game.</p>
     <!--Added SVG and Shape tags in HTML, imported from TicTacToe.svg file-->
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50%" height="50%" viewBox="200 200 900 900" style="margin: auto; display: block;">
         <defs>
@@ -33,10 +34,9 @@
         <image id="Rectangle_5" data-name="Rectangle 2" x="708" y="478" width="194" height="196" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAADECAYAAADNuP4sAAAFmklEQVR4nO3dQWobSRiG4ZoZKRsv7PHOvoaIg72boJV1LGuy1iHsGxijk0wuIRkMAi97cDUUpMGLctNpt/7nBS2yeFP+DT9JfeqP/qNpmiYBwfnzI+M/Pz+n19fXD//m+PxP5zeV/PvjRzP/8qX5+/y8eXp6qtX5/E/pVy3Cy8tL/kv+ms3y5+vVVdUvgc//rH7Vf41ms1k6OTkpfz4/P6/6J4nP/7R+1Uo3TfP4+NhcffvW/PP9e/Pfz5+1Op//KX2pEcKTPpoaAceGRUB40nuLIOfmh/O7lwk5Nz+i/8siyLn5Uf1f/msk5+aH9bubIefmR/R9j4DwJPEp0DK5Rdjv972ivalj/mHmn1Qf4W69TheXl/mz3W5/+/lj++YfcP7ay9RYOfNut2tm83mJxq5vbqrP7nP+2L75h51/Mn2Ew+HQnJ6dFfd2tao6e+yfv69v/mHnn0wf4c17uL9Pi8UiLZfLtNlsqs7ue/7YvvkHnr92q8bOmfsy9Zy8L+bXRwDexfcICE+yCECLPgI/vJ/pXiY8j8/XR/A8Pl8fwfP4fH2Egufx+foIQFDEpwhPsghAi/cj8MP7mdrLiJyd7/0Icna+9yPI2fnej1CQs/O9HwE4UsSnCE+yCECLPgI/vJ/pXibk5Hx9BDk5Xx9BTs7XRyjIyfn6CEBQxKcIT7IIQIs+Aj+8n6m9jMjZ+foIcna+PoKcna+PUJCz8/URgCNFfIrwJIsAtOgj8MP7me5lQk7O10eQk/P1EeTkfH2Egpycr48ABEV8ivAkiwC06CPww/uZ2suInJ2vjyBn5+sjyNn5+ggFOTtfHwE4UsSnCE+yCECLPgI/vJ/pXibk5Hx9BDk5Xx9BTs7XRyjIyfn6CEBQxKcIT5riIuz3+17R4NQx/zDzT6qPcLdep4vLy/zZbre//fyxffMPOH/tZWSsnHe32zWz+bxEY9c3N9Vn9zl/bN/8w84/mT7C4XBoTs/Oinu7WlWdPfbP39c3/7DzT6aP8OY93N+nxWKRlstl2mw2VWf3PX9s3/wDz1+7VWPnxH2Zek7eF/PrIwDv4nsEhCdZBKBFH4Ef3s90LxOex+frI3gen6+P4Hl8vj5CwfP4fH0EICjiU4QnWQSgxfsR+OH9TO1lRM7O934EOTvf+xHk7HzvRyjI2fnejwAcKeJThCdZBKBFH4Ef3s90LxNycr4+gpycr48gJ+frIxTk5Hx9BCAo4lOEJ1kEoEUfgR/ez9ReRuTsfH0EOTtfH0HOztdHKMjZ+foIwJEiPkV4kkUAWvQR+OH9TPcyISfn6yPIyfn6CHJyvj5CQU7O10cAgiI+RXiSRQBa9BH44f1M7WVEzs7XR5Cz8/UR5Ox8fYSCnJ2vjwAcKeJThCdZBKBFH4Ef3s90LxNycr4+gpycr48gJ+frIxTk5Hx9BCAo4lOEJ01xEfb7fa9ocOqYf5j5J9VHuFuv08XlZf5st9vffv7YvvkHnL/2MjJWzrvb7ZrZfF6iseubm+qz+5w/tm/+YeefTB/hcDg0p2dnxb1drarOHvvn7+ubf9j5J9NHePMe7u/TYrFIy+UybTabqrP7nj+2b/6B56/dqrFz4r5MPSfvi/n1EYB38T0CwpMsAtCij8AP72e6lwnP4/P1ETyPz9dH8Dw+Xx+h4Hl8vj4CEBTxKcKTLALQ4v0I/PB+pvYyImfnez+CnJ3v/Qhydr73IxTk7HzvRwCOFPEpwpMsAtCij8AP72e6lwk5OV8fQU7O10eQk/P1EQpycr4+AhAU8SnCkywC0KKPwA/vZ2ovI3J2vj6CnJ2vjyBn5+sjFOTsfH0E4EgRnyI8ySIALfoI/PB+pnuZkJPz9RHk5Hx9BDk5Xx+hICfn6yMAQRGfIjzJIgAt+gj88H6m9jIiZ+frI8jZ+cfoN03zP6psGPBGRbN+AAAAAElFTkSuQmCC"/>
         <g id="winRect" display="none">
             <rect x="220" y="220" width="710" height="710" style="fill: #32004b; opacity: 0.7;"/>
-            <text id="winText" x="465" y="285" fill="white" style="font-size: 170px; font-weight: bold;" transform="rotate(30 20,40)">Text</text>
+            <text id="winText" x="470" y="285" fill="white" style="font-size: 170px; font-weight: bold;" transform="rotate(30 20,40)">Text</text>
         </g>
     </svg>
-
     <button id="reset" style="background-color: white; border: 3px solid black; border-radius: 8px;">Play Again!</button>
     <script src="js/app.js"></script>
 </body>

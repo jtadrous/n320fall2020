@@ -2,6 +2,7 @@
 let counter = 0;
 let winRect = document.getElementById("winRect");
 let winText = document.getElementById("winText");
+let scoreText = document.getElementById("scoreText");
 
 //Added an array to store all the elements of the game board
 /*let grid = [document.getElementById("Rectangle_0"), document.getElementById("Rectangle_1"), document.getElementById("Rectangle_2"),
@@ -55,6 +56,7 @@ class Space {
         //let move = document.getElementById(box);
         if(counter > 8) {
             //Checks to make sure that the counter is less than 8, if not it returns
+            myBoard.win();
             return;
         } else if (type == "O") {
             //Checks to see if the player type is "O", if so it changes the rectangle that was clicked
@@ -89,6 +91,7 @@ class Board {
         }
     }*/
     win() {
+        console.log(counter);
         //large if statement to check win conditions
         if ((this.grid[0].fillType == "O" && this.grid[1].fillType == "O" && this.grid[2].fillType == "O") ||
             (this.grid[3].fillType == "O" && this.grid[4].fillType == "O" && this.grid[5].fillType == "O") ||
@@ -103,6 +106,7 @@ class Board {
             counter = 9;
             winText.innerHTML = "O Wins!";
             winRect.removeAttribute("display");
+            scoreText.innerHTML = person1 + " (X): " + player1.score + "\n" + person2 + " (O): " + player2.score;
         } else if ((this.grid[0].fillType == "X" && this.grid[1].fillType == "X" && this.grid[2].fillType == "X") ||
                    (this.grid[3].fillType == "X" && this.grid[4].fillType == "X" && this.grid[5].fillType == "X") ||
                    (this.grid[6].fillType == "X" && this.grid[7].fillType == "X" && this.grid[8].fillType == "X") ||
@@ -116,12 +120,17 @@ class Board {
                    counter = 9;
                    winText.innerHTML = "X Wins!";
                    winRect.removeAttribute("display");
-
+                   scoreText.innerHTML = person1 + " (X): " + player1.score + "\n" + person2 + " (O): " + player2.score;
+        } else if (counter > 7) {
+                   console.log("Cat Game!");
+                   winText.style.fontSize = 130;
+                   winText.innerHTML = "Cat Game!";
+                   winRect.removeAttribute("display");
         }
     }
     resetIt() {
-        console.log("reset");
-        console.log(this.size);
+        //console.log("reset");
+        //console.log(this.size);
         for (let i = 0; i < this.size; i++) {
             //console.log(this.grid[i].element["xlink:href"]);
             //let varName = "Rectangle_" + i;
@@ -130,10 +139,13 @@ class Board {
             counter = 0;
             this.grid[i].fill = false;
             this.grid[i].fillType = "none";
-            player2.turn = true;
-            player1.turn = false;
+            player2.turn = false;
+            player1.turn = true;
+            //winText.setAttribute("x", 470);
+            //winText.setAttribute("font-size", 170);
+            winText.style.fontSize = 170;
             winRect.setAttribute("display", "none");  
-            console.log(myBoard);
+            //console.log(myBoard);
             //this.grid[i].element.setAttribute("xlink:href", image);
             //console.log(this.grid[i].element.getAttribute("xlink:href"));
         }
@@ -165,8 +177,8 @@ class Player {
             }
             player2.turn = false;
             player1.turn = true;
-            console.log(player2);
-            console.log(player1);
+            //console.log(player2);
+            //console.log(player1);
         } else {
             //console.log("X");
             //myBoard.sendType(square, "X");
@@ -180,8 +192,8 @@ class Player {
             }
             player1.turn = false;
             player2.turn = true;
-            console.log(player2);
-            console.log(player1);
+            //console.log(player2);
+            //console.log(player1);
         }
     }
 }
@@ -211,11 +223,13 @@ reButton.addEventListener('click', function () {
 });
 //console.log(myBoard);
 
-var person1 = prompt("Player 1 (X): Please enter your name.", "Player 1");
-var person2 = prompt("Player 2 (O): Please enter your name.", "Player 2");
+var person1 = prompt("Player X: Please enter your name.", "Player 1");
+var person2 = prompt("Player O: Please enter your name.", "Player 2");
 
-let player1 = new Player(0, person1, "X", false);
-let player2 = new Player(0, person2, "O", true);
+scoreText.innerHTML = person1 + " (X): 0" + "\n" + person2 + " (O): 0";
+
+let player1 = new Player(0, person1, "X", true);
+let player2 = new Player(0, person2, "O", false);
 //player1.takeTurn();
 console.log(player1);
 console.log(player2);
