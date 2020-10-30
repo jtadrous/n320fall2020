@@ -1,5 +1,7 @@
 //Created a variable to act as a counter
 let counter = 0;
+let winRect = document.getElementById("winRect");
+let winText = document.getElementById("winText");
 
 //Added an array to store all the elements of the game board
 /*let grid = [document.getElementById("Rectangle_0"), document.getElementById("Rectangle_1"), document.getElementById("Rectangle_2"),
@@ -49,25 +51,22 @@ class Space {
       this.fillType = fillType; //either X or O or none
     }
     fillSpace(box, type) {
-        //console.log("fill", type);
-        let move = document.getElementById(box);
+        //console.log(box);
+        //let move = document.getElementById(box);
         if(counter > 8) {
             //Checks to make sure that the counter is less than 8, if not it returns
-            return;
-        } else if (move.getAttribute("xlink:href") == "oPlayer.png" || move.getAttribute("xlink:href") == "xPlayer.png") {
-            //Checks to see if the element already has the X or O image, if so then it returns
             return;
         } else if (type == "O") {
             //Checks to see if the player type is "O", if so it changes the rectangle that was clicked
             //to the O image
-            move.setAttribute("xlink:href", "oPlayer.png"); 
+            box.setAttribute("xlink:href", "oPlayer.png"); 
         } else if (type == "X") {
             //Changes the rectangle that was clicked to the X image
-            move.setAttribute("xlink:href", "xPlayer.png"); 
+            box.setAttribute("xlink:href", "xPlayer.png");  
         }
         this.fill = true;
         //console.log(this.fill);
-        console.log(myBoard);
+        //console.log(myBoard);
         myBoard.win();
         //Adds one to the counter variable
         counter++;
@@ -102,6 +101,8 @@ class Board {
             console.log("O Wins!");
             player2.score++;
             counter = 9;
+            winText.innerHTML = "O Wins!";
+            winRect.removeAttribute("display");
         } else if ((this.grid[0].fillType == "X" && this.grid[1].fillType == "X" && this.grid[2].fillType == "X") ||
                    (this.grid[3].fillType == "X" && this.grid[4].fillType == "X" && this.grid[5].fillType == "X") ||
                    (this.grid[6].fillType == "X" && this.grid[7].fillType == "X" && this.grid[8].fillType == "X") ||
@@ -113,6 +114,9 @@ class Board {
                    console.log("X Wins!");
                    player1.score++;
                    counter = 9;
+                   winText.innerHTML = "X Wins!";
+                   winRect.removeAttribute("display");
+
         }
     }
     resetIt() {
@@ -126,6 +130,9 @@ class Board {
             counter = 0;
             this.grid[i].fill = false;
             this.grid[i].fillType = "none";
+            player2.turn = true;
+            player1.turn = false;
+            winRect.setAttribute("display", "none");  
             console.log(myBoard);
             //this.grid[i].element.setAttribute("xlink:href", image);
             //console.log(this.grid[i].element.getAttribute("xlink:href"));
@@ -142,14 +149,18 @@ class Player {
     }
     takeTurn(square) {
         //console.log(square);
-        if(this.type == "O") {
+        let box = document.getElementById(square);
+        if (box.getAttribute("xlink:href") == "oPlayer.png" || box.getAttribute("xlink:href") == "xPlayer.png") {
+            //Checks to see if the element already has the X or O image, if so then it returns
+            return;
+        } else if (this.type == "O") {
             //myBoard.sendType(square, "O");
             for (let i = 0; i < board.length; i++) {
                 //console.log(this.grid[i]);
                 if (board[i].id == square) {
                     //console.log("works");
                     board[i].fillType = this.type;
-                    board[i].fillSpace(square, this.type);
+                    board[i].fillSpace(box, this.type);
                 }
             }
             player2.turn = false;
@@ -164,7 +175,7 @@ class Player {
                 if (board[i].id == square) {
                     //console.log("works");
                     board[i].fillType = this.type;
-                    board[i].fillSpace(square, this.type);
+                    board[i].fillSpace(box, this.type);
                 }
             }
             player1.turn = false;
