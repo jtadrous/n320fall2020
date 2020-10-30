@@ -46,7 +46,7 @@ class Space {
       this.id = id;
       this.element = element; //result of document.getElementById
       this.fill = fill; //boolean of whether the space has been filled or not
-      this.fillType = fillType;
+      this.fillType = fillType; //either X or O or none
     }
     getType() {
         console.log("type");
