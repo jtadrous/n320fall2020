@@ -73,7 +73,7 @@ class Board {
                    (this.grid[1].fillType == "X" && this.grid[4].fillType == "X" && this.grid[7].fillType == "X") ||
                    (this.grid[2].fillType == "X" && this.grid[5].fillType == "X" && this.grid[8].fillType == "X")) {
                   
-                   //If player "O" has won, it adds one to their score, sets the counter automatially to 9, and displays the win screen    
+                   //If player "X" has won, it adds one to their score, sets the counter automatially to 9, and displays the win screen    
                    player1.score++;
                    counter = 9;
                    winText.innerHTML = "X Wins!";
@@ -121,7 +121,6 @@ class Player {
 
     //This method take in the id of a space rectangle and initiates a player's turn
     takeTurn(square) {
-        //console.log(square);
         let box = document.getElementById(square);
         if (box.getAttribute("xlink:href") == "oPlayer.png" || box.getAttribute("xlink:href") == "xPlayer.png") {
             //Checks to see if the element already has the X or O image, if so then it returns
