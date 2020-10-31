@@ -37,6 +37,7 @@ class Space {
     }
 }
 
+//Created a Board class to represent the whole game board
 class Board {
     constructor(size, grid) {
       this.size = size;
@@ -109,13 +110,16 @@ class Board {
     }
 }
 
+//Created a Player class to represent both players in the game
 class Player {
     constructor(score, name, type, turn) {
       this.score = score;
-      this.name = name;
-      this.type = type;
-      this.turn = turn;
+      this.name = name; //string entered in the prompt box
+      this.type = type; //either X or O
+      this.turn = turn; //boolean of whether it is currently their turn
     }
+
+    //This method take in the id of a space rectangle and initiates a player's turn
     takeTurn(square) {
         //console.log(square);
         let box = document.getElementById(square);
@@ -123,34 +127,27 @@ class Player {
             //Checks to see if the element already has the X or O image, if so then it returns
             return;
         } else if (this.type == "O") {
-            //myBoard.sendType(square, "O");
             for (let i = 0; i < board.length; i++) {
-                //console.log(this.grid[i]);
                 if (board[i].id == square) {
-                    //console.log("works");
                     board[i].fillType = this.type;
                     board[i].fillSpace(box, this.type);
                 }
             }
+
+            //updates player's turn property
             player2.turn = false;
             player1.turn = true;
-            //console.log(player2);
-            //console.log(player1);
         } else {
-            //console.log("X");
-            //myBoard.sendType(square, "X");
             for (let i = 0; i < board.length; i++) {
-                //console.log(this.grid[i]);
                 if (board[i].id == square) {
-                    //console.log("works");
                     board[i].fillType = this.type;
                     board[i].fillSpace(box, this.type);
                 }
             }
+
+            //updates player's turn property
             player1.turn = false;
             player2.turn = true;
-            //console.log(player2);
-            //console.log(player1);
         }
     }
 }
@@ -166,19 +163,13 @@ for (let i = 0; i < size; i++) {
     board.push(mySpace);
 }
 
-console.log(board);
-/*for (let i = 0; i < board.length; i++) {
-    board[i].getType();
-}*/
-
 let myBoard = new Board(size, board);
+console.log(myBoard);
 
 let reButton = document.getElementById("reset");
-//reButton.addEventListener("click", myBoard.resetIt);
 reButton.addEventListener('click', function () {
     myBoard.resetIt();
 });
-//console.log(myBoard);
 
 var person1 = prompt("Player X: Please enter your name.", "Player 1");
 var person2 = prompt("Player O: Please enter your name.", "Player 2");
@@ -187,7 +178,7 @@ scoreText.innerHTML = person1 + " (X): 0" + "\n" + person2 + " (O): 0";
 
 let player1 = new Player(0, person1, "X", true);
 let player2 = new Player(0, person2, "O", false);
-//player1.takeTurn();
+
 console.log(player1);
 console.log(player2);
 
@@ -202,6 +193,5 @@ function move(event) {
 
 for (let i = 0; i < board.length; i++) {
     let space = board[i].element;
-    //console.log(space);
     space.addEventListener("click", move);
 }
