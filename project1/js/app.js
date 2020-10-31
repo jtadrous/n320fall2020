@@ -1,61 +1,24 @@
 //Created a variable to act as a counter
 let counter = 0;
+
+//Retrieved all of the text boxes in the svg tag by id
 let winRect = document.getElementById("winRect");
 let winText = document.getElementById("winText");
 let scoreText = document.getElementById("scoreText");
 
-//Added an array to store all the elements of the game board
-/*let grid = [document.getElementById("Rectangle_0"), document.getElementById("Rectangle_1"), document.getElementById("Rectangle_2"),
-document.getElementById("Rectangle_3"), document.getElementById("Rectangle_4"),
-document.getElementById("Rectangle_5"), document.getElementById("Rectangle_6"),
-document.getElementById("Rectangle_7"), document.getElementById("Rectangle_8")];
-console.log(grid);
-
-drawCanvas();
-function drawCanvas() {
-    requestAnimationFrame(drawCanvas);
-}*/
-
-//This listens for when the player clicks on the screen.
-//addEventListener("click", onPlayClick);
-
-//I created a function to get the element that the player clicked.
-/*function onPlayClick(event) {
-    //used the getAttribute method to get the data-name
-    if(event.target.getAttribute("data-name") != "Rectangle 2") {
-        //Checks to make sure that the object is a rectangle, if not it returns
-        return;
-    } else if(counter > 8) {
-        //Checks to make sure that the counter is less than 8, if not it returns
-        return;
-    } else if (event.target.getAttribute("xlink:href") == "oPlayer.png" || event.target.getAttribute("xlink:href") == "xPlayer.png") {
-        //Checks to see if the element already has the X or O image, if so then it returns
-        return;
-    } else if(counter % 2 == 0) {
-        //Checks to see if the counter is divisible by 2, it so it changes the rectangle that was clicked
-        //to the O image
-        event.target.setAttribute("xlink:href", "oPlayer.png"); 
-    } else {
-        //Changes the rectangle that was clicked to the O image
-        event.target.setAttribute("xlink:href", "xPlayer.png"); 
-    }
-    //Adds one to the counter variable
-    counter++;
-}*/
-
-//Classes
+//Created a Space class to represent each box on the game board
 class Space {
     constructor(id, element, fill, fillType) {
-      this.id = id;
+      this.id = id; //the html id of the svg rect tag
       this.element = element; //result of document.getElementById
       this.fill = fill; //boolean of whether the space has been filled or not
       this.fillType = fillType; //either X or O or none
     }
+
+    //This method changes the space image to either X or O and calls the win method
     fillSpace(box, type) {
-        //console.log(box);
-        //let move = document.getElementById(box);
         if(counter > 8) {
-            //Checks to make sure that the counter is less than 8, if not it returns
+            //Checks to make sure that the counter is less than 8, if not it calls the win method and returns
             myBoard.win();
             return;
         } else if (type == "O") {
@@ -67,9 +30,8 @@ class Space {
             box.setAttribute("xlink:href", "xPlayer.png");  
         }
         this.fill = true;
-        //console.log(this.fill);
-        //console.log(myBoard);
         myBoard.win();
+
         //Adds one to the counter variable
         counter++;
     }
