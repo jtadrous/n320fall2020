@@ -42,18 +42,9 @@ class Board {
       this.size = size;
       this.grid = grid;
     }
-    /*sendType(box, type) {
-        for (let i = 0; i < this.grid.length; i++) {
-            //console.log(this.grid[i]);
-            if (this.grid[i].id == box) {
-                //console.log("works");
-                this.grid[i].fillType = type;
-                this.grid[i].fillSpace(box, type);
-            }
-        }
-    }*/
+
+    //This method uses a mixture of if statements and operations to contantly check if there are three in a row
     win() {
-        console.log(counter);
         //large if statement to check win conditions
         if ((this.grid[0].fillType == "O" && this.grid[1].fillType == "O" && this.grid[2].fillType == "O") ||
             (this.grid[3].fillType == "O" && this.grid[4].fillType == "O" && this.grid[5].fillType == "O") ||
@@ -63,13 +54,15 @@ class Board {
             (this.grid[0].fillType == "O" && this.grid[3].fillType == "O" && this.grid[6].fillType == "O") ||
             (this.grid[1].fillType == "O" && this.grid[4].fillType == "O" && this.grid[7].fillType == "O") ||
             (this.grid[2].fillType == "O" && this.grid[5].fillType == "O" && this.grid[8].fillType == "O")) {
-            console.log("O Wins!");
+
+            //If player "O" has won, it adds one to their score, sets the counter automatially to 9, and displays the win screen    
             player2.score++;
             counter = 9;
             winText.innerHTML = "O Wins!";
             winRect.removeAttribute("display");
             TweenMax.from(winRect, {duration: 1, opacity: 0});
             scoreText.innerHTML = person1 + " (X): " + player1.score + "\n" + person2 + " (O): " + player2.score;
+
         } else if ((this.grid[0].fillType == "X" && this.grid[1].fillType == "X" && this.grid[2].fillType == "X") ||
                    (this.grid[3].fillType == "X" && this.grid[4].fillType == "X" && this.grid[5].fillType == "X") ||
                    (this.grid[6].fillType == "X" && this.grid[7].fillType == "X" && this.grid[8].fillType == "X") ||
@@ -78,14 +71,18 @@ class Board {
                    (this.grid[0].fillType == "X" && this.grid[3].fillType == "X" && this.grid[6].fillType == "X") ||
                    (this.grid[1].fillType == "X" && this.grid[4].fillType == "X" && this.grid[7].fillType == "X") ||
                    (this.grid[2].fillType == "X" && this.grid[5].fillType == "X" && this.grid[8].fillType == "X")) {
-                   console.log("X Wins!");
+                  
+                   //If player "O" has won, it adds one to their score, sets the counter automatially to 9, and displays the win screen    
                    player1.score++;
                    counter = 9;
                    winText.innerHTML = "X Wins!";
                    winRect.removeAttribute("display");
                    TweenMax.from(winRect, {duration: 1, opacity: 0});
+
                    scoreText.innerHTML = person1 + " (X): " + player1.score + "\n" + person2 + " (O): " + player2.score;
         } else if (counter > 7) {
+
+                   //If neither player has won after 9 moves, it directly displays the end screen
                    console.log("Cat Game!");
                    winText.style.fontSize = 130;
                    winText.innerHTML = "Cat Game!";
@@ -93,26 +90,21 @@ class Board {
                    TweenMax.from(winRect, {duration: 1, opacity: 0});
         }
     }
+
+    //This method resets the board by removing the "O" and "X" images and setting the counter back at 0
     resetIt() {
-        //console.log("reset");
-        //console.log(this.size);
+        //loops through the grid property of the board
         for (let i = 0; i < this.size; i++) {
-            //console.log(this.grid[i].element["xlink:href"]);
-            //let varName = "Rectangle_" + i;
-            //let el = document.getElementById(varName);
-            this.grid[i].element.setAttribute("xlink:href", "data:img/png;base64,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");
             counter = 0;
+            this.grid[i].element.setAttribute("xlink:href", "data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAADNCAYAAADqt6/kAAAGTUlEQVR4nO3dMW4bVxSF4ZeENGCpEKNO3AYRG2IXg5W4LDGuuQhqB4bBlcSbIA0YIOByAs04A3gAFY+T0eTxfj/AwsXvx1vcxO9wDuaXqqqqVBDH4zFdXV2lt2/flvS1/zPMP8z8v54jff36NX3//v3sQ8/1HzebdDef15/9fv/q54/tm3/A+atM/vr4sZq+eVP9fntbff78OVc/2z8cDtVkOq1+m0zqz/1ymX12n/PH9s0/7PxZi/Dt27f6L/n3y/zx7l3Wl+jjn06n6mY2a92H9Trr7LG/f1/f/MPOn/VPo8lkkq6vr9s/397eZv0vqY//7D3tdmmxWKTVapW2223W2X3PH9s3/8Dz527Vp0+fqnfv31d/fvhQ/f3lS/ZW9vX7Mvb3N///c/7iUiNgCM5KjYBLwyIgPOmlRSg1Z+bzz/a7l4lSc2Y+v4//0yKUnDPz+X38n/5pVHLOzOf38rubUXrOzOef4/sdAeFJ4lOgwSIgPKm0PgKfP5ifexmRc/Mv0S+mj8DnD+kX00fg8wf1s1ZSTs2/UN/vCAhPEp8CDRYB4Un6CHz+D7qXCTk5P6Kvj8AP71f6CHz+D7qbIWfmR/T9joDwJPEp0GAREJ6kj8Dn/yD3MiVn5+sjyKn5F+rrI/DD+zVZ/0mQs/P1EYDLRXyK8CSLADToI/DD+zXdy4ScnK+PICfnB/X1Efjh/ZruZsiZ+foIQFDEpwhPsghAgz4CP7xfk3sZkbPz9RHk7Hx9BDk1/4L9rJWSs/P1EYDLRXyK8CSLADToI/DD+zXdy4ScnK+PICfn6yPIyfmB/e5myJn5+ghAUMSnCE8qcRGOx2OvaLB0zD/M/EX1ER43m3Q3n9ef/X7/6ueP7Zt/wPlzLyNj5byHw6GaTKdtNHa/XGaf3ef8sX3zDzt/MX2E0+lU3cxmrfuwXmedPfb37+ubf9j5i+kjPHtPu11aLBZptVql7XabdXbf88f2zT/w/LlbNXZO3JfSc/K+mF8fAXgRvyMgPMkiAA36CPzwfk33MuF5fL4+gufx+foInsfn6yO0eB6fr48ABEV8ivAkiwA0eD8CP7xfk3sZkbPzvR9Bzs73fgQ5O9/7EVrk7HzvRwAuFPEpwpMsAtCgj8AP79d0LxNycr4+gpycr48gJ+frI7TIyfn6CEBQxKcIT7IIQIM+Aj+8X5N7GZGz8/UR5Ox8fQQ5O18foUXOztdHAC4U8SnCkywC0KCPwA/v13QvE3Jyvj6CnJyvjyAn5+sjtMjJ+foIQFDEpwhPsghAgz4CP7xfk3sZkbPz9RHk7Hx9BDk7Xx+hRc7O10cALhTxKcKTLALQoI/AD+/XdC8TcnK+PoKcnK+PICfn6yO0yMn5+ghAUMSnCE8qcRGOx2OvaLB0zD/M/EX1ER43m3Q3n9ef/X7/6ueP7Zt/wPlzLyNj5byHw6GaTKdtNHa/XGaf3ef8sX3zDzt/MX2E0+lU3cxmrfuwXmedPfb37+ubf9j5i+kjPHtPu11aLBZptVql7XabdXbf88f2zT/w/LlbNXZO3JfSc/K+mF8fAXgRvyMgPMkiAA36CPzwfk33MuF5fL4+gufx+foInsfn6yO0eB6fr48ABEV8ivAkiwA0eD8CP7xfk3sZkbPzvR9Bzs73fgQ5O9/7EVrk7HzvRwAuFPEpwpMsAtCgj8AP79d0LxNycr4+gpycr48gJ+frI7TIyfn6CEBQxKcIT7IIQIM+Aj+8X5N7GZGz8/UR5Ox8fQQ5O18foUXOztdHAC4U8SnCkywC0KCPwA/v13QvE3Jyvj6CnJyvjyAn5+sjtMjJ+foIQFDEpwhPsghAgz4CP7xfk3sZkbPz9RHk7Hx9BDk7Xx+hRc7O10cALhTxKcKTLALQoI/AD+/XdC8TcnK+PoKcnK+PICfn6yO0yMn5+ghAUMSnCE8qcRGOx2OvaLB0zD/M/EX1ER43m3Q3n9ef/X7/6ueP7Zt/wPlzLyNj5byHw6GaTKdtNHa/XGaf3ef8sX3zDzt/MX2E0+lU3cxmrfuwXmedPfb37+ubf9j5i+kjPHtPu11aLBZptVql7XabdXbf88f2zT/w/LlbNXZO3JfSc/K+mF8fAXgRvyMgPMkiAA36CPzwfk33MuF5fL4+gufx+foInsfnB/VTSv8A8Xtm7ZyUPGAAAAAASUVORK5CYII=");
+            
+            //sets everything (like fill, fill type, and turn) to false or none
             this.grid[i].fill = false;
             this.grid[i].fillType = "none";
             player2.turn = false;
             player1.turn = true;
-            //winText.setAttribute("x", 470);
-            //winText.setAttribute("font-size", 170);
             winText.style.fontSize = 170;
             winRect.setAttribute("display", "none");  
-            //console.log(myBoard);
-            //this.grid[i].element.setAttribute("xlink:href", image);
-            //console.log(this.grid[i].element.getAttribute("xlink:href"));
         }
     }
 }
