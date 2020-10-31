@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
     <!--Added an inline style tag to style the game page-->
     <style>
         body {
@@ -11,9 +12,7 @@
         button {
             background-color: white;
             border: 3px solid black;
-            /*border-radius: 8px;*/
-            font-size: 16px;
-            padding: 10px 25px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -21,8 +20,11 @@
     <h1>Final Tic Tac Toe</h1>
     <a href="../index.html"><button>Back</button></a>
     <br />
+
+    <!--Two text tags to display the players' scores and the game rules-->
     <h3 id="scoreText" style="white-space: pre-line;"></h3>
     <p><strong>Rules: </strong>The object of Tic Tac Toe is to get three in a row. You play on a three by three game board. The first player is known as X and the second is O. Players alternate placing Xs and Os on the game board until either oppent has three in a row or all nine squares are filled. X always goes first, and in the event that no one has three in a row, the stalemate is called a cat game.</p>
+    
     <!--Added SVG and Shape tags in HTML, imported from TicTacToe.svg file-->
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40%" height="40%" viewBox="200 200 750 750" style="margin: auto; display: block; background-color: white;">
         <defs>
@@ -45,13 +47,19 @@
         <image id="Rectangle_8" data-name="Rectangle 2" x="708" y="698" width="200" height="200" xlink:href="data:img/png;base64,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"/>
         <image id="Rectangle_2" data-name="Rectangle 2" x="708" y="249" width="200" height="200" xlink:href="data:img/png;base64,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"/>
         <image id="Rectangle_5" data-name="Rectangle 2" x="708" y="478" width="195" height="200" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAADECAYAAADNuP4sAAAFmklEQVR4nO3dQWobSRiG4ZoZKRsv7PHOvoaIg72boJV1LGuy1iHsGxijk0wuIRkMAi97cDUUpMGLctNpt/7nBS2yeFP+DT9JfeqP/qNpmiYBwfnzI+M/Pz+n19fXD//m+PxP5zeV/PvjRzP/8qX5+/y8eXp6qtX5/E/pVy3Cy8tL/kv+ms3y5+vVVdUvgc//rH7Vf41ms1k6OTkpfz4/P6/6J4nP/7R+1Uo3TfP4+NhcffvW/PP9e/Pfz5+1Op//KX2pEcKTPpoaAceGRUB40nuLIOfmh/O7lwk5Nz+i/8siyLn5Uf1f/msk5+aH9bubIefmR/R9j4DwJPEp0DK5Rdjv972ivalj/mHmn1Qf4W69TheXl/mz3W5/+/lj++YfcP7ay9RYOfNut2tm83mJxq5vbqrP7nP+2L75h51/Mn2Ew+HQnJ6dFfd2tao6e+yfv69v/mHnn0wf4c17uL9Pi8UiLZfLtNlsqs7ue/7YvvkHnr92q8bOmfsy9Zy8L+bXRwDexfcICE+yCECLPgI/vJ/pXiY8j8/XR/A8Pl8fwfP4fH2Egufx+foIQFDEpwhPsghAi/cj8MP7mdrLiJyd7/0Icna+9yPI2fnej1CQs/O9HwE4UsSnCE+yCECLPgI/vJ/pXibk5Hx9BDk5Xx9BTs7XRyjIyfn6CEBQxKcIT7IIQIs+Aj+8n6m9jMjZ+foIcna+PoKcna+PUJCz8/URgCNFfIrwJIsAtOgj8MP7me5lQk7O10eQk/P1EeTkfH2Egpycr48ABEV8ivAkiwC06CPww/uZ2suInJ2vjyBn5+sjyNn5+ggFOTtfHwE4UsSnCE+yCECLPgI/vJ/pXibk5Hx9BDk5Xx9BTs7XRyjIyfn6CEBQxKcIT5riIuz3+17R4NQx/zDzT6qPcLdep4vLy/zZbre//fyxffMPOH/tZWSsnHe32zWz+bxEY9c3N9Vn9zl/bN/8w84/mT7C4XBoTs/Oinu7WlWdPfbP39c3/7DzT6aP8OY93N+nxWKRlstl2mw2VWf3PX9s3/wDz1+7VWPnxH2Zek7eF/PrIwDv4nsEhCdZBKBFH4Ef3s90LxOex+frI3gen6+P4Hl8vj5CwfP4fH0EICjiU4QnWQSgxfsR+OH9TO1lRM7O934EOTvf+xHk7HzvRyjI2fnejwAcKeJThCdZBKBFH4Ef3s90LxNycr4+gpycr48gJ+frIxTk5Hx9BCAo4lOEJ1kEoEUfgR/ez9ReRuTsfH0EOTtfH0HOztdHKMjZ+foIwJEiPkV4kkUAWvQR+OH9TPcyISfn6yPIyfn6CHJyvj5CQU7O10cAgiI+RXiSRQBa9BH44f1M7WVEzs7XR5Cz8/UR5Ox8fYSCnJ2vjwAcKeJThCdZBKBFH4Ef3s90LxNycr4+gpycr48gJ+frIxTk5Hx9BCAo4lOEJ01xEfb7fa9ocOqYf5j5J9VHuFuv08XlZf5st9vffv7YvvkHnL/2MjJWzrvb7ZrZfF6iseubm+qz+5w/tm/+YeefTB/hcDg0p2dnxb1drarOHvvn7+ubf9j5J9NHePMe7u/TYrFIy+UybTabqrP7nj+2b/6B56/dqrFz4r5MPSfvi/n1EYB38T0CwpMsAtCij8AP72e6lwnP4/P1ETyPz9dH8Dw+Xx+h4Hl8vj4CEBTxKcKTLALQ4v0I/PB+pvYyImfnez+CnJ3v/Qhydr73IxTk7HzvRwCOFPEpwpMsAtCij8AP72e6lwk5OV8fQU7O10eQk/P1EQpycr4+AhAU8SnCkywC0KKPwA/vZ2ovI3J2vj6CnJ2vjyBn5+sjFOTsfH0E4EgRnyI8ySIALfoI/PB+pnuZkJPz9RHk5Hx9BDk5Xx+hICfn6yMAQRGfIjzJIgAt+gj88H6m9jIiZ+frI8jZ+cfoN03zP6psGPBGRbN+AAAAAElFTkSuQmCC"/>
+        
+        <!--Added an SVG text box and rectangle to display the winner after the game has ended-->
         <g id="winRect" display="none">
             <rect x="220" y="220" width="710" height="710" style="fill: #32004b; opacity: 0.7;"/>
             <text id="winText" x="470" y="285" fill="white" style="font-size: 170px; font-weight: bold;" transform="rotate(30 20,40)">Text</text>
         </g>
     </svg>
     <br />
-    <button id="reset" style="justify-content: center;">Play Again!</button>
+
+    <!--Added a reset button that listens for a click event-->
+    <button id="reset" style="font-size: 16px; padding: 10px 25px;">Play Again!</button>
+
+    <!--Added a link to the Tween software-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="js/app.js"></script>
 </body>
