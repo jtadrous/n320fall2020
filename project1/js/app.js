@@ -154,33 +154,37 @@ class Player {
 //Information
 let size = 9;
 let board = [];
+
+//loops through the board array and makes a new space object for each box
 for (let i = 0; i < size; i++) {
     let varName = "Rectangle_" + i;
     let el = document.getElementById(varName);
-    //el.addEventListener("click", fillSpace);
     let mySpace = new Space(varName, el, false, "none");
     board.push(mySpace);
 }
 
+//creates a new board object
 let myBoard = new Board(size, board);
 console.log(myBoard);
 
+//adds an event listener to the "Play Again!" button to the resetIt() method
 let reButton = document.getElementById("reset");
 reButton.addEventListener('click', function () {
     myBoard.resetIt();
 });
 
+//two prompts to get the names of each player
 var person1 = prompt("Player X: Please enter your name.", "Player 1");
 var person2 = prompt("Player O: Please enter your name.", "Player 2");
-
 scoreText.innerHTML = person1 + " (X): 0" + "\n" + person2 + " (O): 0";
 
+//creates two new player objects
 let player1 = new Player(0, person1, "X", true);
 let player2 = new Player(0, person2, "O", false);
-
 console.log(player1);
 console.log(player2);
 
+//a function with event as the parameter to get the space clicked and call the takeTurn() method
 function move(event) {
     let square = event.target.getAttribute("id");
     if(player2.turn == true) {
@@ -190,6 +194,7 @@ function move(event) {
     }
 }
 
+//loops through the board array and adds an event listener to each box for the move() method
 for (let i = 0; i < board.length; i++) {
     let space = board[i].element;
     space.addEventListener("click", move);
