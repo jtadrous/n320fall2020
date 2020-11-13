@@ -28,10 +28,10 @@ function onPlayClick() {
     //let mouse = event.clientY;
     //myCircle.setAttribute("cy", mouse);
     if (y < 105 && y > 95) {
-        response = "Congrats, you won!";
+        response.innerHTML = "Congrats, you won!";
         console.log("Congrats, you won!");
     } else {
-        response = "Sorry, you lost!";
+        response.innerHTML = "Sorry, you lost!";
         console.log("Sorry, you lost!")
     }
     window.cancelAnimationFrame(frame);
