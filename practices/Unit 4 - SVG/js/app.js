@@ -1,5 +1,6 @@
 //SVG + JS
 let myCircle = document.getElementById("orange");
+let response = document.getElementById("response");
 let pos = true;
 let frame = "";
 
@@ -27,8 +28,10 @@ function onPlayClick() {
     //let mouse = event.clientY;
     //myCircle.setAttribute("cy", mouse);
     if (y < 105 && y > 95) {
+        response = "Congrats, you won!";
         console.log("Congrats, you won!");
     } else {
+        response = "Sorry, you lost!";
         console.log("Sorry, you lost!")
     }
     window.cancelAnimationFrame(frame);
