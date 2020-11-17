@@ -3,16 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <!--Added internal styling to make each book look like it has a book cover-->
+    <style>
+        #cover {
+            width: 100px;
+            height: 150px;
+            text-align: center;
+            padding: 10px;
+            line-height: 1.5;
+            color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
-    <h1>Vue Data Listing</h1>
+    <h1 id="text">Vue Intro Lab</h1>
     <a href="../../index.html"><button style="background-color: white; border: 3px solid black; border-radius: 4px;">Back</button></a>
     <br /><br />
-    <iframe src="https://codesandbox.io/embed/vue-listing-mn3rf?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Vue Listing"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts">
-    </iframe>
+    <!--Created the div with the id 'app' that is connected to the Vue application object-->
+    <div id="app">
+        <!--Created the div connected to the Vue.component. It binds to "book" and loops through the books array.-->
+        <book-view id="cover" v-for="book in books" v-bind:book="book" v-bind:key="book.id" v-bind:style="{backgroundColor: book.color}"></book-view>
+        <br/>
+        <!--Created a button with an onclick event related to the showBook() method-->
+        <button v-on:click="showBook">Show Next Book</button>
+    </div>
+    <!--Linked the Vue.js package-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

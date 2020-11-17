@@ -3,32 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <!--Added internal styling to make each book look like it has a book cover-->
     <style>
-        #cover {
-            width: 100px;
-            height: 150px;
-            text-align: center;
-            padding: 10px;
-            line-height: 1.5;
-            color: whitesmoke;
+        /*Added in-line styling (css) for each of the elements in the grid*/
+        .grid {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 20px;
+            padding: 20px;
+            width: 700px;
+        }
+        .grid > div {
+            background-color: #6d873a;
+            width: 215px;
+            height: 115px;
+        }
+        #big {
+            background-color: #84a4e3;
+            width: 740px;
+            height: 100px;
+        }
+        button {
+            background-color: white;
+            border: 3px solid black;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <h1 id="text">Vue Intro Lab</h1>
-    <a href="../../index.html"><button style="background-color: white; border: 3px solid black; border-radius: 4px;">Back</button></a>
+    <!--Made sure to give each of the elements the 'canvas' class-->
+    <h1 id="text" class="canvas">Animation Lab</h1>
+    <a href="../../index.html"><button class="canvas">Back</button></a>
     <br /><br />
-    <!--Created the div with the id 'app' that is connected to the Vue application object-->
-    <div id="app">
-        <!--Created the div connected to the Vue.component. It binds to "book" and loops through the books array.-->
-        <book-view id="cover" v-for="book in books" v-bind:book="book" v-bind:key="book.id" v-bind:style="{backgroundColor: book.color}"></book-view>
-        <br/>
-        <!--Created a button with an onclick event related to the showBook() method-->
-        <button v-on:click="showBook">Show Next Book</button>
+    <!--Made sure to give each of the rectangle divs the unique class 'rect'-->
+    <div id="big" class="rect canvas"></div>
+    <div class="grid">
+        <div class="rect canvas"></div>
+        <div class="rect canvas"></div>
+        <div class="rect canvas"></div>
+        <div class="rect canvas"></div>
+        <div class="rect canvas"></div>
+        <div class="rect canvas"></div>
     </div>
-    <!--Linked the Vue.js package-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

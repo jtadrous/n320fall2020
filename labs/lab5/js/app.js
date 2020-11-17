@@ -1,40 +1,42 @@
-//Pulled each of the rectangles by their className and pushed them into the shapes array
-let shapes = document.getElementsByClassName("canvas");
-console.log(shapes);
+//Created a variable to act as a counter
+let counter = 0;
 
-//Created a for loop to run through the array of rectangles and animate the opacities to change
-for (i = 0; i < shapes.length; i++) {
-    //Used GreenSock for the animation and delayed the opacity change for each rectangle
-    TweenMax.from(shapes[i], {duration: .7*(i+1), opacity: 0});
-    
-    //Added an event for whenever a user mouses over, mouses off, and clicks an element
-    if (shapes[i].className == "rect canvas") {
-        shapes[i].addEventListener("mouseover", highLight);
-        shapes[i].addEventListener("mouseout", reColor);
-        shapes[i].addEventListener("click", exitGallery);
-    }
+//Added an array to store all the elements of the game board
+let board = [document.getElementById("Rectangle_2"), document.getElementById("Rectangle_2-2"),
+document.getElementById("Rectangle_2-3"), document.getElementById("Rectangle_2-4"),
+document.getElementById("Rectangle_2-5"), document.getElementById("Rectangle_2-6"),
+document.getElementById("Rectangle_2-7"), document.getElementById("Rectangle_2-8"),
+document.getElementById("Rectangle_2-9")];
+console.log(board);
+
+drawCanvas();
+function drawCanvas() {
+    requestAnimationFrame(drawCanvas);
 }
 
-//Created a function to change the rectangle color when hovered over
-function highLight(event) {
-    //Used GreenSock for the animation and changed the element's color to gray
-    TweenMax.to(event.target, {backgroundColor: "#adadad"});
-}
+//This listens for when the player clicks on the screen.
+addEventListener("click", onPlayClick);
 
-//Created a function to change the rectangle color back to the original when mouse is off of it
-function reColor(event) {
-    if (event.target.id == "big") {
-        //Used GreenSock for the animation and changed the element's color to light blue
-        TweenMax.to(event.target, {backgroundColor: "#84a4e3"});
+//I created a function to get the element that the player clicked.
+function onPlayClick(event) {
+    //used the getAttribute method to get the data-name
+    if(event.target.getAttribute("data-name") != "Rectangle 2") {
+        //Checks to make sure that the object is a rectangle, if not it returns
+        return;
+    } else if(counter > 8) {
+        //Checks to make sure that the counter is less than 8, if not it returns
+        return;
+    } else if (event.target.getAttribute("xlink:href") == "oPlayer.png" || event.target.getAttribute("xlink:href") == "xPlayer.png") {
+        //Checks to see if the element already has the X or O image, if so then it returns
+        return;
+    } else if(counter % 2 == 0) {
+        //Checks to see if the counter is divisible by 2, it so it changes the rectangle that was clicked
+        //to the O image
+        event.target.setAttribute("xlink:href", "oPlayer.png"); 
     } else {
-        //Used GreenSock for the animation and changed the element's color to army green
-        TweenMax.to(event.target, {backgroundColor: "#6d873a"});
+        //Changes the rectangle that was clicked to the O image
+        event.target.setAttribute("xlink:href", "xPlayer.png"); 
     }
-}
-
-//Created a function to make the rectangles exit off screen when each one is clicked
-function exitGallery(event) {
-    //Used GreenSock for the animation and delayed the x coordinate change for each rectangle
-    //this makes each rectangle move left off the screen
-    TweenMax.to(event.target, {duration: 1.5, x: -1000});
+    //Adds one to the counter variable
+    counter++;
 }

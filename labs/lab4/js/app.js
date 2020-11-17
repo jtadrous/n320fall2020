@@ -1,42 +1,60 @@
-//Created a variable to act as a counter
-let counter = 0;
+//Julie Tadrous
+//N320
+//Lab 3
 
-//Added an array to store all the elements of the game board
-let board = [document.getElementById("Rectangle_2"), document.getElementById("Rectangle_2-2"),
-document.getElementById("Rectangle_2-3"), document.getElementById("Rectangle_2-4"),
-document.getElementById("Rectangle_2-5"), document.getElementById("Rectangle_2-6"),
-document.getElementById("Rectangle_2-7"), document.getElementById("Rectangle_2-8"),
-document.getElementById("Rectangle_2-9")];
-console.log(board);
-
-drawCanvas();
-function drawCanvas() {
-    requestAnimationFrame(drawCanvas);
-}
-
-//This listens for when the player clicks on the screen.
-addEventListener("click", onPlayClick);
-
-//I created a function to get the element that the player clicked.
-function onPlayClick(event) {
-    //used the getAttribute method to get the data-name
-    if(event.target.getAttribute("data-name") != "Rectangle 2") {
-        //Checks to make sure that the object is a rectangle, if not it returns
-        return;
-    } else if(counter > 8) {
-        //Checks to make sure that the counter is less than 8, if not it returns
-        return;
-    } else if (event.target.getAttribute("xlink:href") == "oPlayer.png" || event.target.getAttribute("xlink:href") == "xPlayer.png") {
-        //Checks to see if the element already has the X or O image, if so then it returns
-        return;
-    } else if(counter % 2 == 0) {
-        //Checks to see if the counter is divisible by 2, it so it changes the rectangle that was clicked
-        //to the O image
-        event.target.setAttribute("xlink:href", "oPlayer.png"); 
-    } else {
-        //Changes the rectangle that was clicked to the O image
-        event.target.setAttribute("xlink:href", "xPlayer.png"); 
+//new class that represents the overall vending machine
+class VirtualMachine {
+    constructor() {
+        //three properties in this class: one for each snack (each snack holds an object with details)
+        this.firstCandy = {name: "Kit-Kat", count: 50, taste:"Sweet"}
+        this.secondCandy = {name: "Skittles", count: 50, taste: "Fruity"}
+        this.firstChips = {name: "Ruffles", count: 50, taste: "Savory"}
     }
-    //Adds one to the counter variable
-    counter++;
+
+    //this method receives the name of the button that was pressed and changes the according count number
+    buySnack(candy) {
+        //this if statement checks to see if the button name equals the name of the object and if the
+        //count number is greater than zero
+        if(candy == "firstCandy" && this.firstCandy.count > 0) {
+            //then it subtracts one from the candy count number
+            this.firstCandy.count--;
+        } else if (candy == "secondCandy" && this.secondCandy.count > 0) {
+            this.secondCandy.count--;
+        } else if (candy == "firstChips" && this.firstChips.count > 0){
+            this.firstChips.count--;
+        }
+        //after running the if statement, it will resubmit the template to the HTML div by calling
+        //the render() method
+        myDiv.innerHTML = this.render();
+    }
+
+    //created a new method called render() to return a JS Template string of HTML code displaying
+    //the information within the snack objects
+    render() {
+        return `
+        <h2>${this.firstCandy.name}</h2>
+        <ul>
+        <li>Type: ${this.firstCandy.taste}</li>
+        <li>Available: ${this.firstCandy.count}</li>
+        </ul>
+        <h2>${this.secondCandy.name}</h2>
+        <ul>
+        <li>Type: ${this.secondCandy.taste}</li>
+        <li>Available: ${this.secondCandy.count}</li>
+        </ul>
+        <h2>${this.firstChips.name}</h2>
+        <ul>
+        <li>Type: ${this.firstChips.taste}</li>
+        <li>Available: ${this.firstChips.count}</li>
+        </ul>
+        `;
+    }
 }
+
+//this variable holds a new instance of the VirtualMachine() class, basically I created a new
+//vending machine.
+let myMach = new VirtualMachine();
+//this line grabs the HTML element with the id of "info" and stores it in a variable
+let myDiv = document.getElementById("info");
+//this line sets the innerHTML of that HTML element to the new template within the render() method
+myDiv.innerHTML = myMach.render();
