@@ -16,7 +16,7 @@ function createScene() {
     var light = new BABYLON.DirectionalLight("Light1", new BABYLON.Vector3(0, -0.5, 1.0), scene);
 
     //Add in a mesh shape
-    var torus = BABYLON.MeshBuilder.CreateTorus("Torus", {thickness: 0.5, diameter: 3}, scene);
+    var torus = BABYLON.MeshBuilder.CreateTorus("Torus", {thickness: 0.2, diameter: 0.5}, scene);
     
     //Add and manipulate meshes in the scene
     var ground = BABYLON.MeshBuilder.CreateGround("Ground", {height: 2, width: 2, subdivisions: 4}, scene);
