@@ -17,6 +17,9 @@ function createScene() {
     //Creating the camera
     camera = new BABYLON.UniversalCamera("UCamera", new BABYLON.Vector3(0,0,-15), scene);
 
+    //Creating a light
+    var light = new BABYLON.DirectionalLight("Light", new BABYLON.Vector3(0,-.5,1), scene);
+
     //Creating a sphere
     ball = BABYLON.MeshBuilder.CreateSphere("Sphere", {diameter: 1}, scene);
 
