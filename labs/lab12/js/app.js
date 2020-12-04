@@ -54,7 +54,8 @@ function createScene() {
     );
     ball.tag = "ball";
     mat1 = new BABYLON.StandardMaterial("Base1", scene);
-    mat1.specularColor = new BABYLON.Color3(0.1,0.1,0.5);
+    mat1.alpha = 1;
+    mat1.diffuseColor = new BABYLON.Color3(0.1,0.1,0.5);
     ball.material = mat1;
 
     //Creating the ground of the scene and physics impostor
@@ -71,7 +72,8 @@ function createScene() {
     target.position.z = 7;
     target.position.x = (Math.random() * 8) - 4;
     mat2 = new BABYLON.StandardMaterial("Base2", scene);
-    mat2.specularColor = new BABYLON.Color3(0.1,0.1,0.5);
+    mat2.alpha = 1;
+    mat2.diffuseColor = new BABYLON.Color3(0.8,0.3,0.5);
     target.material = mat2;
 
     //Setup particle system
