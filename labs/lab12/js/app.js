@@ -1,12 +1,21 @@
 //Application level variables
 var canvas = document.getElementById("renderCanvas");
 var engine = new BABYLON.Engine(canvas, true);
-var camera, scene, ball, target; //Global variables
+var camera, scene, ball, target, toid; //Global variables
 
 //Creating the scene
 scene = createScene();
 engine.runRenderLoop( function() {
     scene.render();
+});
+
+//Function will run whenever the screen is redrawn
+scene.registerAfterRender( function() {
+    //Checks if the ball touches the target
+    if(ball.intersectsMesh(target, false)) {
+        //console.log("Ye");
+        resetBall();
+    }
 });
 
 //Standard Babylon setup
