@@ -1,7 +1,7 @@
 //Application level variables
 var canvas = document.getElementById("renderCanvas");
 var engine = new BABYLON.Engine(canvas, true);
-var camera, scene, ball, target, toid, particles; //Global variables
+var camera, scene, ball, target, toid, particles, mat1, mat2; //Global variables
 
 //Creating the scene
 scene = createScene();
@@ -17,6 +17,14 @@ scene.registerAfterRender( function() {
         //Moves the goal again
         target.position.x = (Math.random() * 8) - 4;
 
+        //Add a particle burst
+        particles.manualEmitCount = 15;
+        particles.start();
+
+        //Position those particles
+        particles.minEmitBox = ball.position;
+        //particles.maxEmitBox = ball.position;
+
         //Resets the ball again
         resetBall();
     }
@@ -31,20 +39,23 @@ function createScene() {
     camera = new BABYLON.UniversalCamera("UCamera", new BABYLON.Vector3(0,0,-15), scene);
 
     //Creating a light
-    var light = new BABYLON.DirectionalLight("Light", new BABYLON.Vector3(0,-.5,1), scene);
-
+    var light = new BABYLON.DirectionalLight("Light", new BABYLON.Vector3(0,-.5,.6), scene);
 
     //Enable the physics with cannon.js
     var gravity = BABYLON.Vector3(0, -9.81, 0);
     var physics = new BABYLON.CannonJSPlugin();
     scene.enablePhysics(gravity, physics);
 
-    //Creating a sphere and physics impostor
+    //Creating a sphere, physics impostor, and material
     ball = BABYLON.MeshBuilder.CreateSphere("Sphere", {diameter: 1}, scene);
     ball.physicsImpostor = new BABYLON.PhysicsImpostor(
         ball, BABYLON.PhysicsImpostor.SphereImpostor,
         {mass: 1, restitution: .2}, scene
     );
+    ball.tag = "ball";
+    mat1 = new BABYLON.StandardMaterial("Base1", scene);
+    mat1.specularColor = new BABYLON.Color3(0.1,0.1,0.5);
+    ball.material = mat1;
 
     //Creating the ground of the scene and physics impostor
     var ground = BABYLON.MeshBuilder.CreateGround("Ground", {height: 20, width: 20, subdivisions: 4}, scene);
@@ -55,20 +66,25 @@ function createScene() {
         {mass: 0, restitution: .9}, scene
     );
 
-    //Make a goal
+    //Make a goal and material
     target = new BABYLON.MeshBuilder.CreateBox("Goal", {height: 5, width: 5}, scene);
     target.position.z = 7;
     target.position.x = (Math.random() * 8) - 4;
+    mat2 = new BABYLON.StandardMaterial("Base2", scene);
+    mat2.specularColor = new BABYLON.Color3(0.1,0.1,0.5);
+    target.material = mat2;
 
     //Setup particle system
     particles = new BABYLON.ParticleSystem("Particles", 2000, scene);
     particles.emitter = new BABYLON.Vector3(0,0,0);
     particles.minEmitPower = 1;
-    particles.maxEmitPower = 3;
-    particles.addVelocityGradient(0,2);
-    particles.start();
-    particles.position.z = 7;
+    particles.maxEmitPower = 4;
+    particles.addVelocityGradient(0,3);
+    //particles.start();
+    //particles.position.z = 7;
 
+    //Load in the particle texture
+    particles.particleTexture = new BABYLON.Texture("img/thumb.png");
 
     //The function returns the whole scene as a variable
     return scene;
@@ -95,17 +111,21 @@ window.addEventListener("click", function() {
 
     //Null Check
     if(selectedObject) {
-        //Get the direction away from where the user clicked on the object
-        var surfaceNorm = pickResult.getNormal(true);
-        var forceDir = surfaceNorm.scale(-700);
+        //Makes sure to check that what you clicked is the ball
+        if(selectedObject.tag == "ball") {
+            console.log("tag");
+            //Get the direction away from where the user clicked on the object
+            var surfaceNorm = pickResult.getNormal(true);
+            var forceDir = surfaceNorm.scale(-700);
 
-        //Applying an upwards force to the selected object
-        selectedObject.physicsImpostor.applyForce(
-            forceDir, //new BABYLON.Vector3(0,500,0),
-            selectedObject.getAbsolutePosition()
-        );
+            //Applying an upwards force to the selected object
+            selectedObject.physicsImpostor.applyForce(
+                forceDir, //new BABYLON.Vector3(0,500,0),
+                selectedObject.getAbsolutePosition()
+            );
 
-        //Timeout: reset the object after 3 seconds
-        toid = setTimeout(resetBall, 3000);
+            //Timeout: reset the object after 3 seconds
+            toid = setTimeout(resetBall, 3000);
+        }
     }
 });
