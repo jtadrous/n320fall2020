@@ -1,7 +1,7 @@
 //Application level variables
 var canvas = document.getElementById("renderCanvas");
 var engine = new BABYLON.Engine(canvas, true);
-var camera, scene, ball, target, toid; //Global variables
+var camera, scene, ball, target, toid, particles; //Global variables
 
 //Creating the scene
 scene = createScene();
@@ -14,6 +14,10 @@ scene.registerAfterRender( function() {
     //Checks if the ball touches the target
     if(ball.intersectsMesh(target, false)) {
         //console.log("Ye");
+        //Moves the goal again
+        target.position.x = (Math.random() * 8) - 4;
+
+        //Resets the ball again
         resetBall();
     }
 });
@@ -56,6 +60,16 @@ function createScene() {
     target.position.z = 7;
     target.position.x = (Math.random() * 8) - 4;
 
+    //Setup particle system
+    particles = new BABYLON.ParticleSystem("Particles", 2000, scene);
+    particles.emitter = new BABYLON.Vector3(0,0,0);
+    particles.minEmitPower = 1;
+    particles.maxEmitPower = 3;
+    particles.addVelocityGradient(0,2);
+    particles.start();
+    particles.position.z = 7;
+
+
     //The function returns the whole scene as a variable
     return scene;
 }
@@ -68,6 +82,9 @@ function resetBall() {
     ball.physicsImpostor.setLinearVelocity(new BABYLON.Vector3());
     //Reset rolling velocity
     ball.physicsImpostor.setAngularVelocity(new BABYLON.Vector3());
+
+    //Clear the timeout if it is still going
+    clearTimeout(toid);
 }
 
 //Adding an listener for the click event to the scene
@@ -89,6 +106,6 @@ window.addEventListener("click", function() {
         );
 
         //Timeout: reset the object after 3 seconds
-        this.setTimeout(resetBall, 3000);
+        toid = setTimeout(resetBall, 3000);
     }
 });
