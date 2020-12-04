@@ -36,11 +36,28 @@ function createScene() {
     //Creating the ground of the scene and physics impostor
     var ground = BABYLON.MeshBuilder.CreateGround("Ground", {height: 20, width: 20, subdivisions: 4}, scene);
     ground.position.y = -3;
-    ground.position.z = 10;
+    ground.position.z = 7;
     ground.physicsImpostor = new BABYLON.PhysicsImpostor(
         ground, BABYLON.PhysicsImpostor.BoxImpostor,
         {mass: 0, restitution: .9}, scene
     );
 
+    //The function returns the whole scene as a variable
     return scene;
 }
+
+//Adding an listener for the click event to the scene
+window.addEventListener("click", function() {
+    //Retrieves the mesh of the object that was clicked
+    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+    var selectedObject = pickResult.pickedMesh;
+    
+    //Null Check
+    if(selectedObject) {
+        //Applying an upwards force to the selected object
+        selectedObject.physicsImpostor.applyForce(
+            new BABYLON.Vector3(0,500,0),
+            selectedObject.getAbsolutePosition()
+        );
+    }
+});
