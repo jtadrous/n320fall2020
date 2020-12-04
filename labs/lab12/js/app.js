@@ -1,7 +1,7 @@
 //Application level variables
 var canvas = document.getElementById("renderCanvas");
 var engine = new BABYLON.Engine(canvas, true);
-var camera, scene, ball; //Global variables
+var camera, scene, ball, target; //Global variables
 
 //Creating the scene
 scene = createScene();
@@ -42,6 +42,11 @@ function createScene() {
         {mass: 0, restitution: .9}, scene
     );
 
+    //Make a goal
+    target = new BABYLON.MeshBuilder.CreateBox("Goal", {height: 5, width: 5}, scene);
+    target.position.z = 7;
+    target.position.x = (Math.random() * 8) - 4;
+
     //The function returns the whole scene as a variable
     return scene;
 }
@@ -66,7 +71,7 @@ window.addEventListener("click", function() {
     if(selectedObject) {
         //Get the direction away from where the user clicked on the object
         var surfaceNorm = pickResult.getNormal(true);
-        var forceDir = surfaceNorm.scale(-500);
+        var forceDir = surfaceNorm.scale(-700);
 
         //Applying an upwards force to the selected object
         selectedObject.physicsImpostor.applyForce(
