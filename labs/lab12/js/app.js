@@ -46,6 +46,16 @@ function createScene() {
     return scene;
 }
 
+//Function to reset the ball to beginning
+function resetBall() {
+    //Reset ball position
+    ball.position = new BABYLON.Vector3();
+    //Reset linear velocity
+    ball.physicsImpostor.setLinearVelocity(new BABYLON.Vector3());
+    //Reset rolling velocity
+    ball.physicsImpostor.setAngularVelocity(new BABYLON.Vector3());
+}
+
 //Adding an listener for the click event to the scene
 window.addEventListener("click", function() {
     //Retrieves the mesh of the object that was clicked
@@ -63,5 +73,8 @@ window.addEventListener("click", function() {
             forceDir, //new BABYLON.Vector3(0,500,0),
             selectedObject.getAbsolutePosition()
         );
+
+        //Timeout: reset the object after 3 seconds
+        this.setTimeout(resetBall, 3000);
     }
 });
