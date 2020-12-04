@@ -51,12 +51,16 @@ window.addEventListener("click", function() {
     //Retrieves the mesh of the object that was clicked
     var pickResult = scene.pick(scene.pointerX, scene.pointerY);
     var selectedObject = pickResult.pickedMesh;
-    
+
     //Null Check
     if(selectedObject) {
+        //Get the direction away from where the user clicked on the object
+        var surfaceNorm = pickResult.getNormal(true);
+        var forceDir = surfaceNorm.scale(-500);
+
         //Applying an upwards force to the selected object
         selectedObject.physicsImpostor.applyForce(
-            new BABYLON.Vector3(0,500,0),
+            forceDir, //new BABYLON.Vector3(0,500,0),
             selectedObject.getAbsolutePosition()
         );
     }
