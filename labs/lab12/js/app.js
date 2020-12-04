@@ -28,10 +28,15 @@ function createScene() {
 
     //Creating a sphere and physics impostor
     ball = BABYLON.MeshBuilder.CreateSphere("Sphere", {diameter: 1}, scene);
-    ball.physicsImpostor = new BABYLON.physicsImpostor(
+    ball.physicsImpostor = new BABYLON.PhysicsImpostor(
         ball, BABYLON.PhysicsImpostor.SphereImpostor,
         {mass: 1, restitution: .2}, scene
     );
+
+    //Creating the ground of the scene
+    var ground = BABYLON.MeshBuilder.CreateGround("Ground", {height: 20, width: 20, subdivisions: 4}, scene);
+    ground.position.y = -3;
+    ground.position.z = 10;
 
     return scene;
 }
