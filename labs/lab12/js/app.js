@@ -39,7 +39,7 @@ function createScene() {
     camera = new BABYLON.UniversalCamera("UCamera", new BABYLON.Vector3(0,0,-15), scene);
 
     //Creating a light
-    var light = new BABYLON.DirectionalLight("Light", new BABYLON.Vector3(0,-.5,.6), scene);
+    var light = new BABYLON.DirectionalLight("Light", new BABYLON.Vector3(0,-.5,.8), scene);
 
     //Enable the physics with cannon.js
     var gravity = BABYLON.Vector3(0, -9.81, 0);
